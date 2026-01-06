@@ -6,6 +6,7 @@ import {
 import { FaCalendarAlt, FaComments, FaFileSignature } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { div } from "framer-motion/client";
 
 export function Home() {
   //carrusel presentacion
@@ -66,7 +67,9 @@ export function Home() {
               className="Cardserv"
               key={index}
             >
-              <img src={serv.imagen} alt={serv.servicio} />
+              <div className="CardServiceImagen">
+                <img src={serv.imagen} alt={serv.servicio} />
+              </div>
               <div className="cardServTexto">
                 <h2>{serv.servicio}</h2>
                 {serv.profesional && <h3>{serv.profesional}</h3>}
@@ -88,7 +91,9 @@ export function Home() {
           viewport={{ once: true }}
           className="proceso"
         >
-          <img src="./public/logo.png" alt="Proceso" />
+          <div className="procesoImagen">
+            <img src="./public/logo.png" alt="Proceso" />
+          </div>
           <div className="ProcesoText">
             <ul>
               <motion.li
@@ -108,7 +113,7 @@ export function Home() {
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.3 }}
+                transition={{ delay: 1.1 }}
                 className="itemProceso"
               >
                 <FaFileSignature size={40} />
@@ -128,7 +133,7 @@ export function Home() {
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.7 }}
+                transition={{ delay: 1.3 }}
                 className="itemProceso"
               >
                 <FaCalendarAlt size={40} />

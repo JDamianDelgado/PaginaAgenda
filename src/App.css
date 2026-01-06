@@ -82,7 +82,7 @@ Link:hover {
   z-index: 1;
 }
 .PresentacionItem {
-  background-color: #d9e6ff;
+  background-color: #d9e6ff8b;
   width: max-content;
   z-index: 2;
   height: 30%;
@@ -96,7 +96,7 @@ Link:hover {
   padding: 1rem;
   position: relative;
   flex-direction: column;
-  color: rgb(103, 92, 92);
+  color: rgb(0, 0, 0);
 }
 
 .textoPresentacion {
@@ -338,4 +338,57 @@ Link {
 Link:hover {
   color: rgb(22, 164, 200);
   font-weight: bold;
+}
+
+@media (max-width: 1024px) and (min-width: 601px) {
+  .nuestrosServicios {
+    overflow: hidden;
+    object-fit: cover;
+    justify-content: center;
+    align-items: start;
+  }
+  .Cardserv {
+    width: 45%;
+    height: max-content;
+    margin-bottom: 1rem;
+  }
+  .CardServiceImagen {
+    height: 80%;
+    width: 100%;
+  }
+  .cardServTexto {
+    height: max-content;
+  }
+
+  .contenedorProceso {
+    overflow: hidden;
+    height: max-content;
+  }
+
+  .proceso {
+    width: 80%;
+    font-size: medium;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .procesoImagen {
+    object-fit: cover;
+    border-radius: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ProcesoText {
+    flex: 2;
+    width: 100%;
+  }
+
+  @media (max-width: 600px) and (min-width: 1px) {
+    .nuestrosServicios {
+      flex-wrap: nowrap;
+    }
+  }
 }
