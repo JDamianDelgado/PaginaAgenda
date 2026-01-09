@@ -6,9 +6,10 @@ import {
 import { FaCalendarAlt, FaComments, FaFileSignature } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { div } from "framer-motion/client";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
+  const navigate = useNavigate();
   //carrusel presentacion
   const [index, setIndex] = useState(0);
   useEffect(() => {
@@ -26,7 +27,7 @@ export function Home() {
   useEffect(() => {
     const intervalo = setInterval(() => {
       setIndexOpinion((prev) => (prev + 1) % historiaPacientesMock.length);
-    }, 4000);
+    }, 7000);
 
     return () => clearInterval(intervalo);
   }, []);
@@ -81,10 +82,12 @@ export function Home() {
         </div>
       </section>
       <section className="contenedorProceso">
-        <h1>Nuestro proceso</h1>
+        <h1 className="textoProceso" id="Proceso">
+          Nuestro proceso
+        </h1>
 
         <motion.section
-          id="Proceso"
+          // id="Proceso"
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -113,7 +116,7 @@ export function Home() {
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.1 }}
+                transition={{ delay: 1 }}
                 className="itemProceso"
               >
                 <FaFileSignature size={40} />
@@ -145,7 +148,9 @@ export function Home() {
             </ul>
           </div>
         </motion.section>
-        <button className="buttonShadow">Planes y reservas</button>
+        <button className="buttonShadow" onClick={() => navigate("/planes")}>
+          Planes y reservas
+        </button>
       </section>
 
       <section className="opiniones ">
@@ -154,9 +159,9 @@ export function Home() {
           <motion.div
             key={indexOpinion}
             initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 2, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             className="opinionItem"
           >
             <section className="textoOpinion">

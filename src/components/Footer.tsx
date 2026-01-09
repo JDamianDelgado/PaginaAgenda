@@ -1,11 +1,9 @@
-// import { Link } from "react-router-dom";
-
 import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
     <div className="contenedorFooter">
-      <form action="" className="formFooter">
+      {/* <form action="" className="formFooter">
         <h2>Network MD</h2>
         <p>SUBSCRIBE</p>
         <input
@@ -17,7 +15,7 @@ export function Footer() {
         <button type="submit" className="buttonShadow">
           Enviar
         </button>
-      </form>
+      </form> */}
 
       <section className="footerContacto">
         <div className="footer">

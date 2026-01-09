@@ -10,10 +10,10 @@ export function Navbar() {
       </div>
       <div className="NavbarMenu">
         <Link to={"/"}>Home</Link>
-        <a href="#Proceso">Nuestro Proceso</a>
-        <a href="#NuestosServicios">Nuestros Servicios</a>
+        <a href="/#Proceso">Nuestro Proceso</a>
+        <a href="/#NuestosServicios">Nuestros Servicios</a>
+        <Link to={"/planes"}>Planes</Link>
         <Link to={"/login"}>Iniciar Sesion</Link>
-
         {/* <Link>Nuestros Servicios</Link>
       <Link>Sobre el proceso</Link>
       <Link>Agendar Sesion</Link>

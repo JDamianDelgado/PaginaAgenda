@@ -5,6 +5,10 @@
 .buttonShadow:hover {
   box-shadow: 0 5px 10px black;
 }
+.layout {
+  padding-top: 4rem;
+  height: 100%;
+}
 /* navbar */
 .Navbar {
   position: fixed;
@@ -13,16 +17,18 @@
   display: flex;
   align-items: center;
   height: 4rem;
-  width: 100vw;
+  width: 100%;
   background-color: #d9e6ff;
   box-shadow: 0 2px 10px black;
-  margin-bottom: 2rem;
-  z-index: 1000;
+  z-index: 4;
+  overflow: hidden;
 }
 
+.navPlan {
+  background-color: #276ced;
+}
 .NavbarLogo {
   display: flex;
-
   align-items: end;
 }
 .NavbarLogo img {
@@ -52,16 +58,13 @@ Link:hover {
 
 /* carrusel Presentacion  */
 .contenedorHome {
-  margin-top: 2rem;
   min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: #d9e6ff;
   overflow: hidden;
-  /* background: linear-gradient(30deg, #d9e6ff, #4d72cf); */
 }
 .carruselServicios {
   position: relative;
@@ -194,13 +197,17 @@ Link:hover {
 /* proceso */
 
 .contenedorProceso {
-  border-top: solid black;
+  /* border-top: solid black; */
+  background-color: #abc4f4;
+  border-radius: 2rem;
+  width: 80%;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 90vh;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 .contenedorProceso button {
   all: unset;
@@ -220,7 +227,7 @@ Link:hover {
 }
 .proceso img {
   height: 100%;
-  width: 50%;
+  width: 90%;
   overflow: hidden;
   object-fit: cover;
   border-radius: 2rem;
@@ -256,13 +263,14 @@ Link:hover {
   display: flex;
   flex-direction: column;
   height: 30vh;
-  background-color: rgb(100, 156, 246);
+  background: linear-gradient(10deg, #276ced, #abc4f4);
   width: 80%;
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
   margin-bottom: 2rem;
   color: white;
+  box-shadow: 0 2px 10px black;
 }
 .textoOpinion {
   width: 80%;
@@ -278,17 +286,18 @@ Link:hover {
 
 /* footer  */
 .contenedorFooter {
-  display: flex;
   flex-wrap: wrap;
-  width: 100vw;
+  width: 100%;
   justify-content: space-around;
-  background-color: #d9e6ff;
+  /* background-color: #d9e6ff; */
   border-top: solid 2px black;
 }
 
 .formFooter {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -317,9 +326,8 @@ Link:hover {
 .footerContacto {
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
-  justify-content: space-around;
-  gap: 2.5rem;
+  margin-bottom: 2rem;
+  justify-content: space-evenly;
 }
 .footer {
   display: flex;
@@ -391,4 +399,176 @@ Link:hover {
       flex-wrap: nowrap;
     }
   }
+}
+/*////////////////////////////////////*/
+/* LOGIN */
+/*////////////////////////////*/
+.contenedorForm {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle, #d9e6ff, #abc4f4);
+}
+.contenedorLogin {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #abc4f4;
+  border-radius: 2rem;
+  box-shadow: 0 2px 10px black;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.verPassword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 2rem;
+}
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.verPassword span {
+  margin-right: 1rem;
+}
+
+.contenedorLogin input {
+  border-radius: 2rem;
+  border: none;
+  padding: 0.8rem;
+}
+.contenedorLogin button {
+  all: unset;
+  padding: 1rem;
+  background-color: #d9e6ff;
+  border-radius: 2rem;
+}
+.contenedorLogin button:hover {
+  box-shadow: 0 2px 10px black;
+}
+.contenedorLogin button:active {
+  box-shadow: 0 8px 10px black;
+  transform: scale(0.9);
+}
+.contenedorRegistro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  background-color: #abc4f4;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 2px 10px black;
+  text-align: center;
+}
+.contenedorRegistro input {
+  border-radius: 2rem;
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.contenedorRegistro button {
+  all: unset;
+  padding: 1rem;
+  background-color: #d9e6ff;
+  border-radius: 2rem;
+}
+.contenedorRegistro button:hover {
+  box-shadow: 0 2px 10px black;
+}
+.contenedorRegistro button:active {
+  box-shadow: 0 8px 10px black;
+  transform: scale(0.9);
+}
+.botonesRegistro {
+  display: flex;
+  gap: 1rem;
+}
+
+/*//////////////////////////*/
+/* planes */
+/*//////////////////////////*/
+
+.contenedorPlanes {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #d9e6ff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.cardPlanes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  background-color: #abc4f4;
+  /* overflow: hidden; */
+  justify-content: center;
+  margin: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 10px black;
+  margin-bottom: 5rem;
+}
+
+.cardFrente,
+.cardTrasera {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 50vh;
+  transition: 1s;
+  padding: 2rem;
+  /* overflow: hidden; */
+}
+
+.cardFrente button {
+  all: unset;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: #859ecb;
+  margin-top: 1rem;
+}
+.cardFrente img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+.cardTrasera {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+.cardTrasera ul li {
+  list-style: circle;
+  margin: 2rem;
+  text-align: start;
+}
+
+.cardTrasera h1 {
+  background-color: #d9e6ff;
+  padding: 1.5rem;
+  justify-content: center;
+  border-radius: 2rem;
+}
+.cardTrasera button {
+  all: unset;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: #859ecb;
+}
+
+.planesGrid {
+  display: flex;
 }

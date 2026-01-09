@@ -85,3 +85,54 @@ export const carruselServiciosMock = [
     imagen: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d",
   },
 ];
+
+export const planesMock = [
+  {
+    id: "individual",
+    nombre: "Individual Plan",
+    imagen:
+      "https://img.freepik.com/foto-gratis/hombre-haciendo-su-ritual-cuidado-personal_23-2149204969.jpg?semt=ais_hybrid&w=740&q=80",
+    precio: 9999,
+    precioOferta: 7999,
+    periodo: "Cada mes",
+    tagline: "Ideal para uso personal",
+    cta: "Elegir",
+    beneficios: [
+      "Atención personalizada",
+      "Soporte 24/7",
+      "Acceso a especialistas",
+    ],
+  },
+  {
+    id: "familiar",
+    nombre: "Family Plan",
+    imagen:
+      "https://img.freepik.com/fotos-premium/familia-sonriendo-mientras-toma-selfie-celular_107420-21149.jpg",
+    precio: 169169,
+    precioOferta: 139999,
+    periodo: "Cada mes",
+    tagline: "Protección para toda la familia",
+    cta: "Elegir",
+    beneficios: [
+      "Cobertura para hasta 5 personas",
+      "Consultas ilimitadas",
+      "Descuentos en estudios médicos",
+    ],
+  },
+  {
+    id: "organizacion",
+    nombre: "Organization Plan",
+    imagen:
+      "https://img.freepik.com/vector-premium/terapia-grupo-circulo-psicologia-reunion-club-gente-escuchando-conversando-ayuda-grupos-apoyo-paciente-comunidad-psicoterapia-vector-concepto-terapia-psicoterapeuta-ilustracion_543062-7058.jpg",
+    precio: 299999,
+    precioOferta: 249999,
+    periodo: "Cada mes",
+    tagline: "Solución para empresas",
+    cta: "Contactar",
+    beneficios: [
+      "Planes personalizados",
+      "Soporte dedicado",
+      "Gestión centralizada de usuarios",
+    ],
+  },
+];
