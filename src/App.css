@@ -394,9 +394,31 @@ Link:hover {
     width: 100%;
   }
 
-  @media (max-width: 600px) and (min-width: 1px) {
+  @media (max-width: 600px) and (min-width: 10px) {
     .nuestrosServicios {
       flex-wrap: nowrap;
+    }
+    .Cardserv {
+      /* background-color: chartreuse; */
+      padding: 0;
+      width: 100%;
+      height: 50vh;
+    }
+    .Cardserv img {
+      width: 20%;
+      height: 40vh;
+      overflow: hidden;
+      object-fit: cover;
+      border-radius: 2rem;
+      display: flex;
+    }
+    .cardServTexto {
+      width: 80%;
+      height: 30%;
+    }
+    .cardServTexto p {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
@@ -510,11 +532,9 @@ input:focus {
 }
 .cardPlanes {
   display: flex;
-  flex-wrap: wrap;
   width: 80%;
   background-color: #abc4f4;
   /* overflow: hidden; */
-  justify-content: center;
   margin: 2rem;
   border-radius: 2rem;
   box-shadow: 0 2px 10px black;
@@ -529,6 +549,7 @@ input:focus {
   width: 50vh;
   transition: 1s;
   padding: 2rem;
+
   /* overflow: hidden; */
 }
 
@@ -547,8 +568,6 @@ input:focus {
 }
 .cardTrasera {
   font-size: 1.1rem;
-  display: flex;
-  flex-direction: column;
 }
 .cardTrasera ul li {
   list-style: circle;
@@ -571,4 +590,6 @@ input:focus {
 
 .planesGrid {
   display: flex;
+  flex-wrap: wrap;
+  width: 40%;
 }

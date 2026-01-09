@@ -95,7 +95,7 @@ export function Home() {
           className="proceso"
         >
           <div className="procesoImagen">
-            <img src="./public/logo.png" alt="Proceso" />
+            <img src="./logo.png" alt="Proceso" />
           </div>
           <div className="ProcesoText">
             <ul>
