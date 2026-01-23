@@ -1,0 +1,73 @@
+.PacienteCard {
+  display: flex;
+  gap: 18px;
+  background: #eef2fb;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 26px rgba(47, 74, 122, 0.2);
+  border-left: 6px solid #3f5f99;
+}
+
+/* AVATAR */
+.PacienteAvatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 3px solid #3f5f99;
+}
+
+/* INFO */
+.PacienteInfo h3 {
+  margin: 0;
+  color: #1f2a44;
+}
+
+.PacienteInfo p {
+  margin: 6px 0;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+/* PAGO */
+.PacientePago {
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.PacientePago.ok {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.PacientePago.pendiente {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* NOTAS */
+.PacienteNotas {
+  margin-top: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.PacienteNota {
+  margin-top: 8px;
+}
+
+.PacienteNota span {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.PacienteNota p {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+}

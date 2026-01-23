@@ -1,0 +1,58 @@
+.MessageCard {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #f4f7fd;
+  border-radius: 14px;
+  border-left: 5px solid #5e80be;
+  box-shadow: 0 8px 18px rgba(94, 128, 190, 0.15);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.MessageCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(94, 128, 190, 0.25);
+}
+
+/* ===== AVATAR ===== */
+.MessageCardAvatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #5e80be;
+}
+
+/* ===== CONTENIDO ===== */
+.MessageCardContent {
+  flex: 1;
+}
+
+/* ===== HEADER ===== */
+.MessageCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.MessageCardHeader h4 {
+  margin: 0;
+  color: #2f4a7a;
+  font-size: 0.95rem;
+}
+
+.MessageCardHeader span {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* ===== TEXTO ===== */
+.MessageCardText {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.4;
+}

@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useAppDispatch, useAppSelector } from "../Store/hooks.Redux";
+import { loginUser, registerUser } from "../Store/auth/auth.Thunks";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const dispatch = useAppDispatch();
+
+  const { loading, error, token, role } = useAppSelector((state) => state.auth);
   const [view, setView] = useState(false);
   const [register, setRegister] = useState({
     nombre: "",
     apellido: "",
     email: "",
     contrasena: "",
+    role: "",
   });
   const [login, setLogin] = useState({
-    nombre: "",
+    email: "",
     contrasena: "",
   });
-
+  const navigate = useNavigate();
   const [viewPassword, setViewPassword] = useState(false);
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLogin({
@@ -31,33 +38,68 @@ export function Login() {
 
   const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("LOGIN:", login);
+
+    dispatch(
+      loginUser({
+        email: login.email,
+        password: login.contrasena,
+      }),
+    );
     setLogin({
-      nombre: "",
+      email: "",
       contrasena: "",
     });
   };
 
   const handleSubmitRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("REGISTER:", register);
+    dispatch(
+      registerUser({
+        nombre: register.nombre,
+        apellido: register.apellido,
+        email: register.email,
+        password: register.contrasena,
+        role: register.role,
+      }),
+    );
     setRegister({
       nombre: "",
       apellido: "",
       email: "",
       contrasena: "",
+      role: "",
     });
   };
+
+  useEffect(() => {
+    if (!token || !role) return;
+
+    const routes: Record<string, string> = {
+      ADMIN: "/panelAdmin",
+      PROFESIONAL: "/miPerfil",
+      PACIENTE: "/",
+    };
+
+    navigate(routes[role]);
+  }, [token, role, navigate]);
+
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <div className="spinner" />
+      </div>
+    );
+  }
   return (
     <div className="contenedorForm">
       {view === false ? (
         <form onSubmit={handleSubmitLogin} className="contenedorLogin">
-          <label htmlFor="usuario">Usuario</label>
+          <label htmlFor="usuario">Email</label>
           <input
             onChange={handleLoginChange}
             type="text"
-            value={login.nombre}
-            name="nombre"
+            value={login.email}
+            name="email"
           />
 
           <label htmlFor="password">Contrasena</label>
@@ -139,6 +181,9 @@ export function Login() {
           </div>
         </form>
       )}
+
+      {error && <p style={{ color: "red" }}>{error.toString()}</p>}
+      {token && <p style={{ color: "green" }}>Login exitoso</p>}
     </div>
   );
 }

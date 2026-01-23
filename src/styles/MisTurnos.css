@@ -1,0 +1,61 @@
+/* ===== CONTENEDOR ===== */
+.MisTurnos {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ===== TÍTULO ===== */
+.MisTurnos h1 {
+  color: #5e80be;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* ===== MENSAJES ===== */
+.MisTurnos p {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.MisTurnos .error {
+  color: #e57373;
+  font-weight: 500;
+}
+
+.MisTurnos .empty {
+  background: #f5f7fb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  margin-top: 20px;
+}
+
+/* ===== LISTA TURNOS ===== */
+.MisTurnosLista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* ===== BOTÓN NUEVO TURNO ===== */
+.BtnNuevoTurno {
+  margin-top: 30px;
+  background: #5e80be;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.BtnNuevoTurno:hover {
+  background: #4a6fb0;
+  transform: translateY(-2px);
+}

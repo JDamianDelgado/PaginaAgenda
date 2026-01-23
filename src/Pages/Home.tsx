@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const navigate = useNavigate();
+
   //carrusel presentacion
   const [index, setIndex] = useState(0);
   useEffect(() => {

@@ -10,50 +10,268 @@
   height: 100%;
 }
 /* navbar */
+
+/* ===== NAVBAR GENERAL ===== */
 .Navbar {
-  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background-color: #5e80be;
+  color: #ffffff;
+  position: sticky;
   top: 0;
-  left: 0;
+  z-index: 1000;
+}
+
+/* ===== LOGO ===== */
+.NavbarLogo img {
+  height: 48px;
+  cursor: pointer;
+}
+
+/* ===== MENU ===== */
+.NavbarMenu {
   display: flex;
   align-items: center;
-  height: 4rem;
-  width: 100%;
-  background-color: #d9e6ff;
-  box-shadow: 0 2px 10px black;
-  z-index: 4;
-  overflow: hidden;
+  gap: 20px;
 }
 
-.navPlan {
-  background-color: #276ced;
+/* Links */
+.NavbarMenu a {
+  text-decoration: none;
+  color: #e5e7eb;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
-.NavbarLogo {
-  display: flex;
-  align-items: end;
-}
-.NavbarLogo img {
-  height: 10rem;
-  width: auto;
-  object-fit: contain;
-}
-.NavbarMenu {
-  margin-left: auto;
-  padding-right: 2rem;
 
-  display: flex;
-  gap: 2rem;
+.NavbarMenu a:hover {
+  color: #38bdf8; /* celeste */
 }
-.NavbarMenu a,
-.NavbarMenu Link {
-  all: unset;
+
+/* ===== BOTONES ===== */
+.NavbarMenu button {
+  background-color: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.Navbar a:hover,
-Link:hover {
-  color: rgb(22, 164, 200);
-  font-weight: bold;
+.NavbarMenu button:hover {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+
+/* ===== DROPDOWN MI CUENTA ===== */
+.dropdown {
+  position: absolute;
+  top: 70px;
+  right: 40px;
+  background-color: #5e80be;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown a {
+  color: #e5e7eb;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.dropdown a:hover {
+  background-color: #1e293b;
+  color: #38bdf8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .Navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .NavbarMenu {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .dropdown {
+    right: 20px;
+  }
+}
+
+/* AGENDA TURNOS  */
+
+/* ===== CONTENEDOR GENERAL ===== */
+/* ===== CONTENEDOR GENERAL ===== */
+.AgendaTurnos {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 28px;
+  background-color: #f4f7fc;
+  border-radius: 16px;
+  font-family: system-ui, sans-serif;
+}
+
+/* ===== TITULOS ===== */
+.AgendaTurnos h1 {
+  color: #5e80be;
+  margin-bottom: 20px;
+}
+
+.AgendaTurnos h2 {
+  color: #1f2937;
+  margin: 24px 0 12px;
+}
+
+/* ===== CALENDARIO ===== */
+.react-calendar {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #dbe3f0;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.react-calendar__navigation button {
+  color: #5e80be;
+}
+
+.react-calendar__tile {
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.react-calendar__tile:hover {
+  background: #e8effa;
+}
+
+.react-calendar__tile--active {
+  background: #5e80be !important;
+  color: white;
+}
+
+/* ===== LISTA TURNOS ===== */
+.TurnosLista {
+  margin-top: 20px;
+}
+
+/* ===== CARD TURNO ===== */
+.TurnoCard {
+  background: #ffffff;
+  border: 1px solid #dbe3f0;
+  padding: 16px 20px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.TurnoInfo p {
+  margin: 4px 0;
+  color: #4b5563;
+}
+
+/* ===== ESTADOS ===== */
+.estado {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.estado.RESERVADO {
+  color: #4caf50;
+}
+
+.estado.CANCELADO {
+  color: #e57373;
+}
+
+.estado.COMPLETADO {
+  color: #8a8a8a;
+}
+
+/* ===== BOTÓN CANCELAR ===== */
+.TurnoCard button {
+  background: transparent;
+  border: 1px solid #e57373;
+  color: #e57373;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.TurnoCard button:hover {
+  background: #e57373;
+  color: white;
+}
+
+/* ===== MODAL ===== */
+.ModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(94, 128, 190, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Modal {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 18px;
+  width: 420px;
+  box-shadow: 0 10px 30px rgba(94, 128, 190, 0.25);
+}
+
+.Modal h3 {
+  color: #5e80be;
+}
+
+.Modal textarea {
+  width: 100%;
+  height: 100px;
+  background: #f4f7fc;
+  border: 1px solid #dbe3f0;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  resize: none;
+}
+
+/* ===== ACCIONES MODAL ===== */
+.ModalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.ModalActions .confirm {
+  background: #e57373;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.ModalActions .close {
+  background: transparent;
+  border: 1px solid #5e80be;
+  color: #5e80be;
+  padding: 8px 16px;
+  border-radius: 8px;
 }
 
 /* carrusel Presentacion  */
@@ -161,7 +379,9 @@ Link:hover {
   background-color: #92b1eea4;
   border-radius: 2rem;
   box-shadow: 0 5px 10px black;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 }
 .Cardserv img {
@@ -592,4 +812,29 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   width: 40%;
+}
+/* spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

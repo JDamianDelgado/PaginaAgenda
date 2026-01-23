@@ -1,0 +1,124 @@
+/* ===== CONTENEDOR GENERAL ===== */
+.PanelAdmin {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #1f2a44, #2f4a7a);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+}
+
+/* ===== TITULO ===== */
+.PanelAdmin h1 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #e6ecf8;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 10px;
+}
+
+/* ===== SECCIONES ===== */
+.PanelAdmin section {
+  margin-bottom: 35px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* ===== SUBTITULOS ===== */
+.PanelAdmin section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #a9c1ff;
+}
+
+/* ===== LISTAS ===== */
+.AdminList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===== ITEM USUARIO ===== */
+.AdminUserItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: background 0.2s ease;
+}
+
+.AdminUserItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== INFO USUARIO ===== */
+.AdminUserInfo {
+  font-size: 0.95rem;
+  color: #f1f5ff;
+}
+
+/* ===== BOTONES ===== */
+.AdminActions {
+  display: flex;
+  gap: 10px;
+}
+
+.AdminBtnEdit {
+  background: #5e80be;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.AdminBtnEdit:hover {
+  background: #4b6fb0;
+}
+
+.AdminBtnDelete {
+  background: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.AdminBtnDelete:hover {
+  background: #c9302c;
+}
+
+/* ===== ESTADOS ===== */
+.PanelAdminLoading {
+  color: #a9c1ff;
+}
+
+.PanelAdminError {
+  color: #ff8a8a;
+  font-weight: 500;
+}
+
+/* ===== BOTON CERRAR MODAL ===== */
+.AdminCloseBtn {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid #a9c1ff;
+  color: #a9c1ff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.AdminCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

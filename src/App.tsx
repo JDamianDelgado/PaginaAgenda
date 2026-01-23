@@ -7,10 +7,17 @@ import { Login } from "./Pages/Login";
 import { Planes } from "./Pages/Planes";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useAppSelector } from "./Store/hooks.Redux";
+import { PanelAdmin } from "./Pages/ADMIN/panelAdmin";
+import { ProtectedRoute } from "./utils/proteccionRutas";
+import { MiCuenta } from "./Pages/MiCuenta";
+import { MisTurnos } from "./Pages/Turnos";
+import { PerfilProfesional } from "./Pages/PROFESIONAL/perfilProfesional";
+import { NuevoTurno } from "./components/nuevoTurno";
+import { AgendaTurnos } from "./Pages/PROFESIONAL/agendaTurnos";
 
 export function ScrollToTop() {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
@@ -18,6 +25,8 @@ export function ScrollToTop() {
   return null;
 }
 function App() {
+  const { role } = useAppSelector((state) => state.auth);
+
   return (
     <>
       <ScrollToTop />
@@ -27,8 +36,62 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/planes" element={<Planes />} />
-          {/* <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} /> */}
+          {role === "PACIENTE" && (
+            <>
+              <Route
+                path="/miCuenta"
+                element={
+                  <ProtectedRoute allowedRoles={["PACIENTE"]}>
+                    <MiCuenta />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/misTurnos"
+                element={
+                  <ProtectedRoute allowedRoles={["PACIENTE"]}>
+                    <MisTurnos />
+                  </ProtectedRoute>
+                }
+              />
+            </>
+          )}
+          {role === "ADMIN" && (
+            <Route
+              path="/panelAdmin"
+              element={
+                <ProtectedRoute allowedRoles={["ADMIN"]}>
+                  <PanelAdmin />
+                </ProtectedRoute>
+              }
+            />
+          )}
+          {role === "PROFESIONAL" && (
+            <>
+              <Route
+                path="/miPerfil"
+                element={
+                  <ProtectedRoute allowedRoles={["PROFESIONAL"]}>
+                    <PerfilProfesional />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route
+                path="/miAgenda"
+                element={
+                  <ProtectedRoute allowedRoles={["PROFESIONAL"]}>
+                    <AgendaTurnos></AgendaTurnos>
+                  </ProtectedRoute>
+                }
+              />
+            </>
+          )}
+          {role === "PACIENTE" && (
+            <Route
+              path="/nuevoTurno"
+              element={<NuevoTurno></NuevoTurno>}
+            ></Route>
+          )}
         </Routes>
       </div>
       <Footer />
