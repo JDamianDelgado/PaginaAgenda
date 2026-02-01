@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type {
   createPerfilProfesional,
-  interfacemiPerfilProfesional,
   InterfaceProfesional,
   MiPerfilProfesionalResponse,
   updatePerfilProfesional,

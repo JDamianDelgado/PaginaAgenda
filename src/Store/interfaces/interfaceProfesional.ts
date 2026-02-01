@@ -12,20 +12,6 @@ export interface InterfaceProfesional {
   Horario: interfaceHorarios[] | [];
 }
 
-export interface interfacemiPerfilProfesional {
-  idUser: string;
-  nombre: string;
-  apellido: string;
-  email: string;
-  role: string;
-
-  profesional: {
-    idProfesional: string;
-    imagenUrl: string;
-    TurnosProfesional: interfaceTurnosProfesional[];
-    Horario: interfaceHorarios[] | [];
-  };
-}
 export interface createPerfilProfesional {
   imagenUrl: string;
   especialidad: string;
