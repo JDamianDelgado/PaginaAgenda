@@ -20,9 +20,11 @@ export const loginUser = createAsyncThunk<
       body: JSON.stringify(credentials),
     });
 
-    const data = await response.json();
+    const text = await response.text();
+    const data = text ? JSON.parse(text) : null;
+
     if (!response.ok) {
-      return rejectWithValue(data);
+      return rejectWithValue(data ?? { message: "Error al iniciar sesión" });
     }
 
     return data;
