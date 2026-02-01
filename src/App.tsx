@@ -14,7 +14,7 @@ import { MiCuenta } from "./Pages/MiCuenta";
 import { MisTurnos } from "./Pages/Turnos";
 import { PerfilProfesional } from "./Pages/PROFESIONAL/perfilProfesional";
 import { NuevoTurno } from "./components/nuevoTurno";
-import { AgendaTurnos } from "./Pages/PROFESIONAL/agendaTurnos";
+import { AgendaTurnos } from "./Pages/PROFESIONAL/agendaTurnosProfesional";
 
 export function ScrollToTop() {
   const { pathname } = useLocation();

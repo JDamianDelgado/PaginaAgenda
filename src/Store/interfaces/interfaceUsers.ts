@@ -9,7 +9,7 @@ export interface InterfaceUsuario {
   nombre: string;
   apellido: string;
   email: string;
-  profesional?: InterfaceProfesional;
+  profesional: InterfaceProfesional;
   role: string | null;
   turnos?: InterfaceTurno[];
   createdAt?: string;

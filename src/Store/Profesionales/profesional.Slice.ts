@@ -84,6 +84,7 @@ export const profesionalSlice = createSlice({
       .addCase(miPerfilProfesional.fulfilled, (state, action) => {
         state.loading = false;
         state.usuario = action.payload;
+        state.turnosProfesional = action.payload.profesional.TurnosProfesional;
       })
       .addCase(miPerfilProfesional.rejected, (state, action) => {
         state.loading = false;
@@ -95,3 +96,6 @@ export const profesionalSlice = createSlice({
       });
   },
 });
+//// corregir la importaciones de la interfaces al modificar los datos que traia mi perfil profesional se boicoteo todo.. arreglarlos
+
+// aplicar en send email en caso de cancelar turno por un motiv en particular

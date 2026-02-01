@@ -1,33 +1,43 @@
 import { useNavigate } from "react-router-dom";
 import { CardComponente } from "../components/cardTurnos";
 import { useAppDispatch, useAppSelector } from "../Store/hooks.Redux";
-import { mockTurnos } from "../Mock/Turnos.Mock";
-import { useEffect, useState } from "react";
-import { miUsuario } from "../Store/Usuarios/usuarios.Thunks";
+// import { mockTurnos } from "../Mock/Turnos.Mock";
+import { useEffect } from "react";
 import "../styles/MisTurnos.css";
+import {
+  cancelarTurno,
+  eliminarTurno,
+  misTurnosPaciente,
+} from "../Store/Turnos/Turnos.thunks";
+
 export function MisTurnos() {
-  const { idUser } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const [turnos, setTurnos] = useState(mockTurnos);
-
+  const { loading, error, misTurnos } = useAppSelector((state) => state.turnos);
   useEffect(() => {
-    if (idUser) {
-      dispatch(miUsuario({ id: idUser }));
-    }
-  }, [dispatch, idUser]);
+    dispatch(misTurnosPaciente());
+  }, [dispatch]);
 
-  const { loading, error } = useAppSelector((state) => state.usuarios);
-
-  const cancelarTurno = (idTurno: string) => {
-    setTurnos((prev) =>
-      prev.map((turno) =>
-        turno.idTurno === idTurno ? { ...turno, estado: "CANCELADO" } : turno,
-      ),
-    );
+  const handleCancelarTurno = async (idTurno: string) => {
+    await dispatch(cancelarTurno({ idTurno }));
+    alert("Turno cancelado");
+    dispatch(misTurnosPaciente());
   };
-
+  const handleDeleteTurno = async (idTurno: string) => {
+    await dispatch(eliminarTurno({ idTurno }));
+    alert("Turno eliminado correctamente");
+    dispatch(misTurnosPaciente());
+  };
+  const hoy = new Date();
+  const reservados = misTurnos.filter((t) => {
+    const fechaTurno = new Date(t.fecha);
+    return t.estado === "RESERVADO" && fechaTurno >= hoy;
+  });
+  const cancelados = misTurnos.filter((t) => t.estado === "CANCELADO");
+  const completados = misTurnos.filter((t) => {
+    const fechaTurno = new Date(t.fecha);
+    return t.estado === "COMPLETADO" || fechaTurno < hoy;
+  });
   return (
     <div className="MisTurnos">
       <h1>Mis turnos</h1>
@@ -35,16 +45,55 @@ export function MisTurnos() {
       {loading && <p>Cargando turnos...</p>}
       {error && <p className="error">{error}</p>}
 
-      {turnos.length === 0 && <div className="empty">No tenés turnos.</div>}
+      {misTurnos.length === 0 && <div className="empty">No tenés turnos.</div>}
 
       <div className="MisTurnosLista">
-        {turnos.map((turno) => (
-          <CardComponente
-            key={turno.idTurno}
-            turno={turno}
-            onCancelar={cancelarTurno}
-          />
-        ))}
+        <h1>Reservados</h1>
+        {reservados.length === 0 ? (
+          <p>No existen turnos </p>
+        ) : (
+          reservados.map((turno) => (
+            <div key={turno.idTurno}>
+              <CardComponente
+                key={turno.idTurno}
+                turno={turno}
+                handleCancelarTurno={handleCancelarTurno}
+                handleEliminarTurno={handleDeleteTurno}
+              />
+            </div>
+          ))
+        )}
+        <h1>Cancelados</h1>
+        {cancelados.length === 0 ? (
+          <p>No existen turnos </p>
+        ) : (
+          cancelados.map((turno) => (
+            <div key={turno.idTurno}>
+              <CardComponente
+                key={turno.idTurno}
+                turno={turno}
+                handleCancelarTurno={handleCancelarTurno}
+                handleEliminarTurno={handleDeleteTurno}
+              />
+            </div>
+          ))
+        )}
+
+        <h1>Completados</h1>
+        {completados.length === 0 ? (
+          <p>No existen turnos </p>
+        ) : (
+          completados.map((turno) => (
+            <div key={turno.idTurno}>
+              <CardComponente
+                key={turno.idTurno}
+                turno={turno}
+                handleCancelarTurno={handleCancelarTurno}
+                handleEliminarTurno={handleDeleteTurno}
+              />
+            </div>
+          ))
+        )}
       </div>
 
       <button className="BtnNuevoTurno" onClick={() => navigate("/nuevoTurno")}>

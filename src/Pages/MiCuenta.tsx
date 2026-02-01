@@ -39,8 +39,10 @@ export function MiCuenta() {
             <span className="MiCuentaLabel">Email</span>
             <span className="MiCuentaValue">{usuarioActual.email}</span>
           </div>
-
-          <span className="MiCuentaRole">{usuarioActual.role}</span>
+          <div className="MiCuentaItem">
+            <span className="MiCuentaLabel">Plan</span>
+            <span className="MiCuentaValue">Proximamente....</span>
+          </div>
         </div>
       )}
     </div>

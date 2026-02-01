@@ -4,6 +4,8 @@ import type {
   LoginError,
 } from "../interfaces/interfaceUsers";
 
+const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
+
 export const allUsers = createAsyncThunk<
   InterfaceUsuario[],
   void,
@@ -12,7 +14,7 @@ export const allUsers = createAsyncThunk<
   try {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:3000/users", {
+    const response = await fetch(`${API_URL}/users`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +39,7 @@ export const deleteUser = createAsyncThunk<
 >("usuarios/deleteUser", async ({ id }, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:3000/users/${id}`, {
+    const response = await fetch(`${API_URL}/users/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +67,7 @@ export const editUser = createAsyncThunk<
 >("usuarios/editUser", async ({ id, userData }, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:3000/users/${id}`, {
+    const response = await fetch(`${API_URL}/users/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +97,7 @@ export const miUsuario = createAsyncThunk<
 >("usuarios/miUsuario", async ({ id }, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:3000/users/${id}`, {
+    const response = await fetch(`${API_URL}/users/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

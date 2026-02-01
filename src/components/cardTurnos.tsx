@@ -1,30 +1,71 @@
-import type { InterfaceTurno } from "../Store/interfaces/interfaceTurnos";
+import { useAppSelector } from "../Store/hooks.Redux";
+import type { InterfaceMisTurnos } from "../Store/interfaces/interfaceTurnos";
 interface Props {
-  turno: InterfaceTurno;
+  turno: InterfaceMisTurnos;
 }
 import "../styles/cardComponent.css";
 interface Props {
-  turno: InterfaceTurno;
-  onCancelar: (idTurno: string) => void;
+  turno: InterfaceMisTurnos;
+  handleCancelarTurno: (idTurno: string) => void;
+  handleEliminarTurno: (idTurno: string) => void;
 }
 
-export function CardComponente({ turno, onCancelar }: Props) {
+export function CardComponente({
+  turno,
+  handleCancelarTurno,
+  handleEliminarTurno,
+}: Props) {
+  const { loading } = useAppSelector((state) => state.turnos);
+  const fechaFormateada = (fecha: string) => {
+    const [year, month, day] = fecha.split("-");
+
+    const meses: Record<string, string> = {
+      "01": "enero",
+      "02": "febrero",
+      "03": "marzo",
+      "04": "abril",
+      "05": "mayo",
+      "06": "junio",
+      "07": "julio",
+      "08": "agosto",
+      "09": "septiembre",
+      "10": "octubre",
+      "11": "noviembre",
+      "12": "diciembre",
+    };
+
+    return `${day} de ${meses[month]} de ${year}`;
+  };
   return (
     <div className="CardTurno">
-      <h3>{turno.fecha}</h3>
+      <h2>
+        Profesional: {turno.profesional.UserProfesional.nombre}
+        {turno.profesional.UserProfesional.apellido}
+      </h2>
+      <img
+        src={turno.profesional.imagenUrl}
+        alt={turno.profesional.idProfesional}
+        width={100}
+      />
+      <h3>{fechaFormateada(turno.fecha)}</h3>
       <p>Hora: {turno.hora}</p>
-
-      {turno.profesional && (
-        <p>
-          Profesional: {turno.profesional.nombre} {turno.profesional.apellido}
-        </p>
-      )}
 
       <small className={`estado ${turno.estado}`}>{turno.estado}</small>
 
       {turno.estado === "RESERVADO" && (
-        <button onClick={() => onCancelar(turno.idTurno)}>
-          Cancelar turno
+        <button
+          disabled={loading}
+          onClick={() => handleCancelarTurno(turno.idTurno)}
+        >
+          {loading ? "Cancelando..." : "Cancelar turno"}
+        </button>
+      )}
+      {turno.estado === "CANCELADO" && (
+        <button
+          disabled={loading}
+          onClick={() => handleEliminarTurno(turno.idTurno)}
+        >
+          {loading ? "Eliminando..." : "Eliminar turno"}
         </button>
       )}
     </div>

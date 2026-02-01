@@ -1,7 +1,10 @@
 import "../../styles/panelProfesional.css";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks.Redux";
-import { editPerfilProfesional } from "../../Store/Profesionales/profesional.Thunks";
+import {
+  editPerfilProfesional,
+  miPerfilProfesional,
+} from "../../Store/Profesionales/profesional.Thunks";
 import "../../styles/panelProfesional.css";
 
 interface Props {
@@ -18,7 +21,6 @@ export function UpdateFormPerfilProfesional({ setViewForm }: Props) {
     imagenUrl: profesional?.imagenUrl || "",
     especialidad: profesional?.especialidad || "",
     descripcion: profesional?.descripcion || "",
-    activo: profesional?.activo ?? true,
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -30,6 +32,7 @@ export function UpdateFormPerfilProfesional({ setViewForm }: Props) {
     e.preventDefault();
     await dispatch(editPerfilProfesional(dataPerfil));
     setViewForm(false);
+    dispatch(miPerfilProfesional());
   }
 
   return (

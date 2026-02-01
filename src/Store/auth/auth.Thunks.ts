@@ -1,34 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import type {
+  LoginResponse,
+  registerCredentials,
+  LoginCredentials,
+  LoginError,
+} from "../interfaces/interfaceAuth";
 
-interface LoginCredentials {
-  email: string;
-  password: string;
-}
+const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
 
-interface registerCredentials {
-  nombre: string;
-  apellido: string;
-  email: string;
-  password: string;
-  role?: string;
-}
-interface LoginError {
-  message: string;
-  error?: string;
-  statusCode?: number;
-}
-
-interface LoginResponse {
-  sub: string;
-  token: string;
-}
 export const loginUser = createAsyncThunk<
   LoginResponse,
   LoginCredentials,
   { rejectValue: LoginError }
 >("auth/loginUser", async (credentials, { rejectWithValue }) => {
   try {
-    const response = await fetch("http://localhost:3000/auth/login", {
+    const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
@@ -52,7 +38,7 @@ export const registerUser = createAsyncThunk<
   { rejectValue: LoginError }
 >("auth/registerUser", async (credentials, { rejectWithValue }) => {
   try {
-    const response = await fetch("http://localhost:3000/auth/register", {
+    const response = await fetch(`${API_URL}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),

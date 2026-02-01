@@ -61,7 +61,7 @@ export function PerfilProfesional() {
             <p>{usuario.profesional?.descripcion}</p>
 
             <span className="PerfilProfesionalBadge">
-              Turnos: {usuario.profesional?.Turnos?.length || 0}
+              Turnos: {usuario.profesional?.TurnosProfesional.length || 0}
             </span>
 
             <div className="PerfilProfesionalActions">
@@ -92,5 +92,3 @@ export function PerfilProfesional() {
     </div>
   );
 }
-
-//editrar usuario mejoar paaraque carggue bien se modifique o cree el usuario , admas debemos orednarl lo bisual

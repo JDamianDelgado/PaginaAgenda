@@ -1,10 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type {
   createPerfilProfesional,
+  interfacemiPerfilProfesional,
   InterfaceProfesional,
+  MiPerfilProfesionalResponse,
   updatePerfilProfesional,
 } from "../interfaces/interfaceProfesional";
-import type { InterfaceUsuario } from "../interfaces/interfaceUsers";
+
+const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
 
 export const allProfesionales = createAsyncThunk<
   InterfaceProfesional[],
@@ -14,7 +17,7 @@ export const allProfesionales = createAsyncThunk<
   try {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:3000/profesional", {
+    const response = await fetch(`${API_URL}/profesional`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,13 +36,13 @@ export const allProfesionales = createAsyncThunk<
 });
 
 export const miPerfilProfesional = createAsyncThunk<
-  InterfaceUsuario,
+  MiPerfilProfesionalResponse,
   void,
   { rejectValue: { message: string } }
 >("profesional/miPerfilProfesional", async (_, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://localhost:3000/profesional/miPerfil", {
+    const response = await fetch(`${API_URL}/profesional/miPerfil`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +69,7 @@ export const creatPerfilProfesional = createAsyncThunk<
 >("profesional/create", async (profesionalData, { rejectWithValue }) => {
   const token = localStorage.getItem("token");
   try {
-    const response = await fetch("http://localhost:3000/profesional", {
+    const response = await fetch(`${API_URL}/profesional`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +99,7 @@ export const editPerfilProfesional = createAsyncThunk<
 >("profesional/update", async (profesionalData, { rejectWithValue }) => {
   const token = localStorage.getItem("token");
   try {
-    const response = await fetch("http://localhost:3000/profesional", {
+    const response = await fetch(`${API_URL}/profesional`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -130,7 +133,7 @@ export const deletePerfilProfesional = createAsyncThunk<
 >("profesional/delete", async (_, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://localhost:3000/profesional", {
+    const response = await fetch(`${API_URL}/profesional`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -152,7 +155,38 @@ export const deletePerfilProfesional = createAsyncThunk<
   }
 });
 
-// faltala creacion de los slices y thunks de profesional @@@@@@@@@@@@@@@@@@@@@@
+export const sendEmail = createAsyncThunk<
+  string,
+  { email: string; text: string },
+  { rejectValue: { message: string } }
+>("profesional/sendEmail", async (dataMensaje, { rejectWithValue }) => {
+  try {
+    const token = localStorage.getItem("token");
 
-// el probale es que en tun base de datos registraste los profesionees el userrepository y no en profesional respositroy, por eso no te trae datos
-//
+    const response = await fetch(`${API_URL}/profesional/sendMsg`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        email: dataMensaje.email,
+        text: dataMensaje.text,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return rejectWithValue({
+        message: errorData.message || "No se pudo enviar el email",
+      });
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    const errorMensaje =
+      error instanceof Error ? error.message : "No se pudo enviar el Email";
+    return rejectWithValue({ message: errorMensaje });
+  }
+});

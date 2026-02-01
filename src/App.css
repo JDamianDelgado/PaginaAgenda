@@ -838,3 +838,64 @@ input:focus {
     transform: rotate(360deg);
   }
 }
+
+/* //cardProfesional// */
+/* styles/cardTurnoProfesional.css */
+
+.card-turno {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #999;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.card-body {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.estado {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Estados */
+.estado-reservado {
+  border-left-color: #1976d2;
+}
+
+.estado.reservado {
+  background: #1976d2;
+}
+
+.estado-cancelado {
+  border-left-color: #d32f2f;
+}
+
+.estado.cancelado {
+  background: #d32f2f;
+}
+
+.estado-completado {
+  border-left-color: #388e3c;
+}
+
+.estado.completado {
+  background: #388e3c;
+}

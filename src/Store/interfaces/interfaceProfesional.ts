@@ -8,8 +8,23 @@ export interface InterfaceProfesional {
   descripcion: string;
   activo: boolean;
   imagenUrl: string;
-  Turnos?: InterfaceTurno[] | [];
+  TurnosProfesional: InterfaceTurno[] | [];
   Horario: interfaceHorarios[] | [];
+}
+
+export interface interfacemiPerfilProfesional {
+  idUser: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  role: string;
+
+  profesional: {
+    idProfesional: string;
+    imagenUrl: string;
+    TurnosProfesional: interfaceTurnosProfesional[];
+    Horario: interfaceHorarios[] | [];
+  };
 }
 export interface createPerfilProfesional {
   imagenUrl: string;
@@ -25,10 +40,55 @@ export interface updatePerfilProfesional {
   activo?: boolean;
 }
 
+export interface interfaceTurnosProfesional {
+  idTurno: string;
+  fecha: string;
+  hora: string;
+  estado: string;
+  creado: string;
+  user: {
+    idUser: string;
+    nombre: string;
+    apellido: string;
+    email: string;
+  };
+}
+
+export interface MiPerfilProfesionalResponse {
+  idUser: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  role: "PROFESIONAL";
+
+  profesional: {
+    idProfesional: string;
+    imagenUrl: string;
+    descripcion: string;
+    especialidad: string;
+    TurnosProfesional: {
+      idTurno: string;
+
+      user: {
+        idUser: string;
+        nombre: string;
+        apellido: string;
+        email: string;
+      };
+
+      fecha: string;
+      hora: string;
+      estado: "RESERVADO" | "CANCELADO" | "COMPLETADO";
+      creado: string;
+    }[];
+  };
+}
+
 export interface InterfaceProfesionalState {
   profesionales: InterfaceProfesional[] | [];
   profesional: InterfaceProfesional | null;
-  usuario: InterfaceUsuario | null;
+  usuario: MiPerfilProfesionalResponse | null;
+  turnosProfesional: interfaceTurnosProfesional[] | null;
   loading: boolean;
   error: string | null;
 }
@@ -37,6 +97,7 @@ export const initialStateProfesional: InterfaceProfesionalState = {
   profesionales: [],
   profesional: null,
   usuario: null,
+  turnosProfesional: [],
   loading: false,
   error: null,
 };
