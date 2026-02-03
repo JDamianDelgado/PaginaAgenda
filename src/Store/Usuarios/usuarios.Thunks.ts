@@ -4,8 +4,7 @@ import type {
   LoginError,
 } from "../interfaces/interfaceUsers";
 
-const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
-
+const API_URL = import.meta.env.VITE_API_URL;
 export const allUsers = createAsyncThunk<
   InterfaceUsuario[],
   void,

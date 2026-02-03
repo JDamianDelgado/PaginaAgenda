@@ -8,7 +8,7 @@ import type {
   TurnosDisponiblesResponse,
 } from "../interfaces/interfaceTurnos";
 
-const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
+const API_URL = import.meta.env.VITE_API_URL;
 //fecha formato aaaa/mm/dd
 export const TurnosProfesionalDisponible = createAsyncThunk<
   TurnosDisponiblesResponse,

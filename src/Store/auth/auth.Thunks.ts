@@ -6,13 +6,14 @@ import type {
   LoginError,
 } from "../interfaces/interfaceAuth";
 
-const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const loginUser = createAsyncThunk<
   LoginResponse,
   LoginCredentials,
   { rejectValue: LoginError }
 >("auth/loginUser", async (credentials, { rejectWithValue }) => {
+  console.log(API_URL);
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
@@ -21,10 +22,18 @@ export const loginUser = createAsyncThunk<
     });
 
     const text = await response.text();
-    const data = text ? JSON.parse(text) : null;
+
+    let data;
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      return rejectWithValue({
+        message: "Respuesta inválida del servidor",
+      });
+    }
 
     if (!response.ok) {
-      return rejectWithValue(data ?? { message: "Error al iniciar sesión" });
+      return rejectWithValue(data ?? { message: "Credenciales inválidas" });
     }
 
     return data;

@@ -6,8 +6,7 @@ import type {
   updatePerfilProfesional,
 } from "../interfaces/interfaceProfesional";
 
-const API_URL = import.meta.env.VITE_URL_DB_BACKEND;
-
+const API_URL = import.meta.env.VITE_API_URL;
 export const allProfesionales = createAsyncThunk<
   InterfaceProfesional[],
   void,

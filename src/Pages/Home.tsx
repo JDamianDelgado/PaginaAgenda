@@ -38,10 +38,7 @@ export function Home() {
   return (
     <div className="contenedorHome">
       <section className="carruselServicios">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1701815883025-3e4faab6eec8?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-        />
+        <img src="/home.png" alt="" />
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
