@@ -1,12 +1,13 @@
 /* ===== CARD TURNO ===== */
 
 .CardTurno {
-  background: #ffffff;
-  border: 1px solid #dbe3f0;
-  border-radius: 14px;
-  padding: 16px 20px;
+  background: #a8bee8;
+  box-shadow: 0 4px 8px black;
+  border-radius: 10%;
+  padding: 1rem 1rem;
+  gap: 2rem;
   margin-bottom: 14px;
-  box-shadow: 0 4px 10px rgba(94, 128, 190, 0.12);
+  /* box-shadow: 0 4px 10px rgba(94, 128, 190, 0.12); */
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -20,10 +21,13 @@
 /* ===== FECHA ===== */
 .CardTurno h3 {
   margin: 0 0 6px;
-  color: #5e80be;
+  color: #000000;
   font-size: 1.1rem;
 }
 
+.CardTurno img {
+  border-radius: 30%;
+}
 /* ===== INFO ===== */
 .CardTurno p {
   margin: 4px 0;
@@ -62,9 +66,9 @@
 /* ===== BOTÓN ===== */
 .CardTurno button {
   margin-top: 12px;
-  background: transparent;
+  background: rgb(232, 164, 164);
   border: 1px solid #e57373;
-  color: #e57373;
+  color: #f7f6f6;
   padding: 6px 16px;
   border-radius: 8px;
   cursor: pointer;

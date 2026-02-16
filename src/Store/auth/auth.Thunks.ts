@@ -13,7 +13,6 @@ export const loginUser = createAsyncThunk<
   LoginCredentials,
   { rejectValue: LoginError }
 >("auth/loginUser", async (credentials, { rejectWithValue }) => {
-  console.log(API_URL);
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",

@@ -3,6 +3,8 @@
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
+  justify-content: center;
+  text-align: center;
 }
 
 /* ===== TÍTULO ===== */
@@ -34,10 +36,19 @@
 
 /* ===== LISTA TURNOS ===== */
 .MisTurnosLista {
-  display: flex;
   flex-direction: column;
+  text-align: center;
+  display: flex;
   gap: 14px;
   margin-top: 20px;
+}
+.estadoTurno {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* ===== BOTÓN NUEVO TURNO ===== */

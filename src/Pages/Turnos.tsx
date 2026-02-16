@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CardComponente } from "../components/cardTurnos";
 import { useAppDispatch, useAppSelector } from "../Store/hooks.Redux";
-// import { mockTurnos } from "../Mock/Turnos.Mock";
 import { useEffect } from "react";
 import "../styles/MisTurnos.css";
 import {
@@ -14,6 +13,7 @@ export function MisTurnos() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { loading, error, misTurnos } = useAppSelector((state) => state.turnos);
+
   useEffect(() => {
     dispatch(misTurnosPaciente());
   }, [dispatch]);
@@ -23,21 +23,27 @@ export function MisTurnos() {
     alert("Turno cancelado");
     dispatch(misTurnosPaciente());
   };
-  const handleDeleteTurno = async (idTurno: string) => {
+
+  const handleEliminarTurno = async (idTurno: string) => {
     await dispatch(eliminarTurno({ idTurno }));
     alert("Turno eliminado correctamente");
     dispatch(misTurnosPaciente());
   };
+
   const hoy = new Date();
+
   const reservados = misTurnos.filter((t) => {
     const fechaTurno = new Date(t.fecha);
     return t.estado === "RESERVADO" && fechaTurno >= hoy;
   });
+
   const cancelados = misTurnos.filter((t) => t.estado === "CANCELADO");
+
   const completados = misTurnos.filter((t) => {
     const fechaTurno = new Date(t.fecha);
     return t.estado === "COMPLETADO" || fechaTurno < hoy;
   });
+
   return (
     <div className="MisTurnos">
       <h1>Mis turnos</h1>
@@ -48,52 +54,59 @@ export function MisTurnos() {
       {misTurnos.length === 0 && <div className="empty">No tenés turnos.</div>}
 
       <div className="MisTurnosLista">
+        {/* RESERVADOS */}
         <h1>Reservados</h1>
-        {reservados.length === 0 ? (
-          <p>No existen turnos </p>
-        ) : (
-          reservados.map((turno) => (
-            <div key={turno.idTurno}>
-              <CardComponente
-                key={turno.idTurno}
-                turno={turno}
-                handleCancelarTurno={handleCancelarTurno}
-                handleEliminarTurno={handleDeleteTurno}
-              />
-            </div>
-          ))
-        )}
-        <h1>Cancelados</h1>
-        {cancelados.length === 0 ? (
-          <p>No existen turnos </p>
-        ) : (
-          cancelados.map((turno) => (
-            <div key={turno.idTurno}>
-              <CardComponente
-                key={turno.idTurno}
-                turno={turno}
-                handleCancelarTurno={handleCancelarTurno}
-                handleEliminarTurno={handleDeleteTurno}
-              />
-            </div>
-          ))
-        )}
+        <div className="estadoTurno">
+          {reservados.length === 0 ? (
+            <p>No existen turnos</p>
+          ) : (
+            reservados.map((turno) => (
+              <div key={turno.idTurno}>
+                <CardComponente
+                  turno={turno}
+                  handleCancelarTurno={handleCancelarTurno}
+                  handleEliminarTurno={handleEliminarTurno}
+                />
+              </div>
+            ))
+          )}
+        </div>
 
+        {/* CANCELADOS */}
+        <h1>Cancelados</h1>
+        <div className="estadoTurno">
+          {cancelados.length === 0 ? (
+            <p>No existen turnos</p>
+          ) : (
+            cancelados.map((turno) => (
+              <div key={turno.idTurno}>
+                <CardComponente
+                  turno={turno}
+                  handleCancelarTurno={handleCancelarTurno}
+                  handleEliminarTurno={handleEliminarTurno}
+                />
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* COMPLETADOS */}
         <h1>Completados</h1>
-        {completados.length === 0 ? (
-          <p>No existen turnos </p>
-        ) : (
-          completados.map((turno) => (
-            <div key={turno.idTurno}>
-              <CardComponente
-                key={turno.idTurno}
-                turno={turno}
-                handleCancelarTurno={handleCancelarTurno}
-                handleEliminarTurno={handleDeleteTurno}
-              />
-            </div>
-          ))
-        )}
+        <div className="estadoTurno">
+          {completados.length === 0 ? (
+            <p>No existen turnos</p>
+          ) : (
+            completados.map((turno) => (
+              <div key={turno.idTurno}>
+                <CardComponente
+                  turno={turno}
+                  handleCancelarTurno={handleCancelarTurno}
+                  handleEliminarTurno={handleEliminarTurno}
+                />
+              </div>
+            ))
+          )}
+        </div>
       </div>
 
       <button className="BtnNuevoTurno" onClick={() => navigate("/nuevoTurno")}>

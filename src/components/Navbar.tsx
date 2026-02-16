@@ -9,7 +9,7 @@ export function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [openMiCuenta, setOpenMiCuenta] = useState(false);
-
+  const [open, setOpen] = useState(false);
   const isAuth = Boolean(token);
 
   const handleLogout = () => {
@@ -22,20 +22,22 @@ export function Navbar() {
     <nav className="Navbar">
       <div className="NavbarLogo">
         <Link to="/">
-          <img src="/LogoPagina.png" alt="Power of mind" />
+          <img src="image.png" alt="Power of mind" />
         </Link>
       </div>
 
       <div className="NavbarMenu">
-        <Link to="/">Home</Link>
-
+        <button className="menu-btn" onClick={() => setOpen(!open)}>
+          ☰
+        </button>
         {!isAuth && (
-          <>
+          <ul className={`nav-links ${open ? "active" : ""}`}>
+            <Link to="/">Home</Link>
             <a href="/#Proceso">Nuestro Proceso</a>
             <a href="/#NuestrosServicios">Nuestros Servicios</a>
             <Link to="/planes">Planes</Link>
             <Link to="/login">Iniciar sesión</Link>
-          </>
+          </ul>
         )}
 
         {isAuth && (

@@ -1,0 +1,353 @@
+.contenedorHome {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d9e6ff;
+  overflow: hidden;
+}
+
+/* carrousel */
+.carruselServicios {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  justify-content: center;
+  align-items: end;
+}
+.carruselServicios img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.PresentacionItem {
+  background-color: #d9e6ff8b;
+  width: max-content;
+  z-index: 2;
+  height: 30%;
+  margin-bottom: 2rem;
+  justify-content: center;
+  border-radius: 2rem;
+  box-shadow: 0 2px 10px white;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
+  padding: 1rem;
+  position: relative;
+  flex-direction: column;
+  color: rgb(0, 0, 0);
+}
+
+.textoPresentacion {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: center;
+  justify-content: end;
+  align-self: end;
+  color: rgb(237, 237, 245);
+}
+
+.carruselServicios::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+/* carrousel movil  */
+@media (max-width: 480px) {
+  .contenedorHome {
+    max-width: 100%;
+    border-radius: 2rem;
+  }
+  .carruselServicios {
+    width: 98%;
+  }
+  .PresentacionItem {
+    margin: 2rem;
+    height: max-content;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+  .PresentacionItem h2 {
+    font-size: x-large;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .PresentacionItem p {
+    text-align: center;
+  }
+}
+
+/******** nuestros servicios *********/
+.contenedorNuestrosServicios {
+  text-align: center;
+  margin-top: 2rem;
+}
+.contenedorNuestrosServicios h2 {
+  font-size: 2rem;
+}
+.nuestrosServicios {
+  display: flex;
+  margin-top: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+}
+
+.Cardserv {
+  padding: 0.5rem;
+  width: 25%;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #92b1eea4;
+  border-radius: 2rem;
+  box-shadow: 0 5px 10px black;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.Cardserv img {
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 2rem;
+  display: flex;
+}
+.cardServTexto {
+  width: 80%;
+  height: 30vh;
+  margin-top: 1rem;
+}
+.cardServTexto p {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+.Cardserv button {
+  all: unset;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 241, 0.69);
+  color: white;
+  margin: 1rem;
+}
+
+.Cardserv:hover {
+  box-shadow: 2px 5px 20px black;
+}
+
+/********* Nuestrs servicios movil *********/
+@media (max-width: 480px) {
+  .contenedorNuestrosServicios {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .contenedorNuestrosServicios h2 {
+    font-size: 1.5rem;
+  }
+  .nuestrosServicios {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Cardserv {
+    width: 80%;
+    height: max-content;
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  .Cardserv img {
+    width: 70vw;
+    height: 30vh;
+  }
+  .cardServTexto {
+    width: 80%;
+    height: max-content;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .cardServTexto p {
+    padding: 0;
+    margin: 0;
+  }
+  .Cardserv button {
+    display: none;
+  }
+}
+
+/********* Proceso *********/
+.contenedorProceso {
+  background-color: #abc4f4;
+  border-radius: 2rem;
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin-top: 6rem;
+}
+.contenedorProceso button {
+  all: unset;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  color: white;
+  width: 30%;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: rgb(100, 156, 246);
+}
+.proceso {
+  display: flex;
+  height: 90%;
+  width: 85%;
+}
+.proceso img {
+  height: 100%;
+  width: 90%;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 2rem;
+  box-shadow: 0 5px 10px black;
+}
+
+.ProcesoText {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+}
+.ProcesoText ul {
+  list-style: none;
+}
+.itemProceso {
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+/*********** Proceso movil **********/
+@media (max-width: 480px) {
+  .contenedorProceso {
+    width: 98%;
+    padding: 0;
+    justify-content: center;
+    height: max-content;
+    margin-top: 2rem;
+  }
+
+  .proceso {
+    display: flex;
+    height: max-content;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .procesoImagen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ProcesoText {
+    width: 100%;
+    margin: 0;
+  }
+
+  .itemProceso {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .contenedorProceso button {
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+/************** Opiniones **************/
+.opiniones {
+  margin-top: 4rem;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.opinionItem {
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  background: linear-gradient(10deg, #276ced, #abc4f4);
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  box-shadow: 0 2px 10px black;
+}
+.textoOpinion {
+  width: 80%;
+  font-size: 1.3rem;
+}
+.textoOpinion span {
+  background-color: #9fbaf0a4;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 2rem;
+  margin: 2rem;
+}
+
+/************* Opiniones movil ***********/
+@media (max-width: 480px) {
+  .opiniones {
+    margin-top: 1rem;
+  }
+  .opinionItem {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    object-fit: contain;
+    width: 85%;
+    padding: 1rem;
+  }
+  .textoOpinion {
+    font-size: 1rem;
+  }
+  .textoOpinion span {
+    padding: 0.5rem;
+    margin: 0rem;
+  }
+}

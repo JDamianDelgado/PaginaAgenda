@@ -45,7 +45,7 @@ export function Home() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             className="PresentacionItem"
           >
             <h2>{serviceCarrusel.titulo}</h2>
@@ -134,7 +134,7 @@ export function Home() {
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.3 }}
+                transition={{ delay: 1.2 }}
                 className="itemProceso"
               >
                 <FaCalendarAlt size={40} />
@@ -146,7 +146,7 @@ export function Home() {
             </ul>
           </div>
         </motion.section>
-        <button className="buttonShadow" onClick={() => navigate("/planes")}>
+        <button className="buttonShadows" onClick={() => navigate("/planes")}>
           Planes y reservas
         </button>
       </section>
