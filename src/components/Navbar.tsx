@@ -32,11 +32,19 @@ export function Navbar() {
         </button>
         {!isAuth && (
           <ul className={`nav-links ${open ? "active" : ""}`}>
-            <Link to="/">Home</Link>
-            <a href="/#Proceso">Nuestro Proceso</a>
-            <a href="/#NuestrosServicios">Nuestros Servicios</a>
-            <Link to="/planes">Planes</Link>
-            <Link to="/login">Iniciar sesión</Link>
+            <Link to="/" onClick={() => setOpen(false)}>
+              Home
+            </Link>
+            <a href="/#Proceso" onClick={() => setOpen(false)}>
+              Nuestro Proceso
+            </a>
+
+            <Link to="/planes" onClick={() => setOpen(false)}>
+              Planes
+            </Link>
+            <Link to="/login" onClick={() => setOpen(false)}>
+              Iniciar sesión
+            </Link>
           </ul>
         )}
 

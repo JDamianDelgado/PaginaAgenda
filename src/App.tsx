@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./Pages/Home";
 import "./App.css";
-import "./styles/navbar.css";
+import "./styles/Navbar.css";
 import "./styles/Home.css";
 import "./styles/footer.css";
+import "./styles/planes.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Login } from "./Pages/Login";

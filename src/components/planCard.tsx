@@ -49,7 +49,6 @@ export function PlanCard({ plan }: { plan: Plan }) {
                 <li key={i}>{b}</li>
               ))}
             </ul>
-            {/* <h3>${plan.precio}</h3> */}
             <h1>${plan.precioOferta}</h1>
             <button>Quiero mas informacion</button>
           </motion.div>

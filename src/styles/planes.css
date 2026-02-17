@@ -1,0 +1,205 @@
+/*//////////////////////////*/
+/* planes */
+/*//////////////////////////*/
+
+.contenedorPlanes {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #d9e6ff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.cardPlanes {
+  display: flex;
+  width: 80%;
+  background-color: #abc4f4;
+  /* overflow: hidden; */
+  margin: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 10px black;
+  margin-bottom: 5rem;
+}
+
+.cardFrente,
+.cardTrasera {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 50vh;
+  transition: 1s;
+  padding: 2rem;
+
+  /* overflow: hidden; */
+}
+
+.cardFrente button {
+  all: unset;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: #859ecb;
+  margin-top: 1rem;
+}
+.cardFrente img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+.cardTrasera {
+  font-size: 1.1rem;
+}
+.cardTrasera ul li {
+  list-style: circle;
+  margin: 2rem;
+  text-align: start;
+}
+
+.cardTrasera h1 {
+  background-color: #d9e6ff;
+  padding: 1.5rem;
+  justify-content: center;
+  border-radius: 2rem;
+}
+.cardTrasera button {
+  all: unset;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: #859ecb;
+}
+
+.planesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+}
+/* spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedorPlanes {
+    border-radius: 2rem;
+  }
+  .planesPresentacion h1 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .cardPlanes {
+    display: flex;
+    width: 100%;
+    background-color: #abc4f4;
+    /* overflow: hidden; */
+    margin: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 2px 10px black;
+    margin-bottom: 1rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cardFrente,
+  .cardTrasera {
+    height: 90%;
+    width: max-content;
+    padding: 0.5rem;
+  }
+
+  .cardTrasera ul p {
+    text-align: start;
+  }
+  .cardFrente button {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .cardFrente img {
+    border-radius: 1rem;
+  }
+  .cardTrasera {
+    font-size: 0.9rem;
+  }
+  .cardTrasera ul li {
+    list-style: circle;
+    margin: 0.5rem;
+    justify-content: start;
+
+    text-align: start;
+  }
+
+  .cardTrasera h1 {
+    background-color: #d9e6ff;
+    padding: 1rem;
+  }
+  .cardTrasera button {
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: #859ecb;
+  }
+
+  .planesGrid {
+    display: flex;
+    width: 80%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1024px) {
+  .cardPlanes {
+    display: flex;
+    width: 100%;
+    background-color: #abc4f4;
+    /* overflow: hidden; */
+    margin: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 2px 10px black;
+    margin-bottom: 1rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cardFrente,
+  .cardTrasera {
+    height: 90%;
+    width: max-content;
+    padding: 0.5rem;
+  }
+  .cardFrente button {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .cardFrente img {
+    border-radius: 1rem;
+  }
+  .cardTrasera {
+    font-size: 0.9rem;
+  }
+  .cardTrasera ul li {
+    list-style: circle;
+    margin: 0.5rem;
+    justify-content: start;
+
+    text-align: start;
+  }
+}

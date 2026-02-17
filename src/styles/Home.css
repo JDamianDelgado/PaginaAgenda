@@ -67,7 +67,7 @@
   z-index: 1;
 }
 /* carrousel movil  */
-@media (max-width: 480px) {
+@media (min-width: 480px) and (max-width: 768px) {
   .contenedorHome {
     max-width: 100%;
     border-radius: 2rem;
@@ -99,6 +99,7 @@
 .contenedorNuestrosServicios {
   text-align: center;
   margin-top: 2rem;
+  height: max-content;
 }
 .contenedorNuestrosServicios h2 {
   font-size: 2rem;
@@ -147,6 +148,7 @@
   padding-right: 2.5rem;
 }
 .Cardserv button {
+  display: none;
   all: unset;
   padding: 1.5rem;
   border-radius: 2rem;
@@ -186,6 +188,99 @@
     width: 70vw;
     height: 30vh;
   }
+  .cardServTexto {
+    width: 80%;
+    height: max-content;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .cardServTexto p {
+    padding: 0;
+    margin: 0;
+  }
+  .Cardserv button {
+    display: none;
+  }
+}
+
+/********* Nuestrs servicios pc  *********/
+@media (min-width: 480px) and (max-width: 1024px) {
+  .contenedorNuestrosServicios {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .contenedorNuestrosServicios h2 {
+    font-size: 1.5rem;
+  }
+  .nuestrosServicios {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Cardserv {
+    width: 80%;
+    height: max-content;
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  .Cardserv img {
+    width: 70vw;
+    height: 30vh;
+  }
+  .cardServTexto {
+    width: 80%;
+    height: max-content;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .cardServTexto p {
+    padding: 0;
+    margin: 0;
+  }
+  .Cardserv button {
+    display: none;
+  }
+}
+
+/* macbook */
+@media (min-width: 1024px) {
+  .contenedorNuestrosServicios {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .nuestrosServicios {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    align-items: center;
+  }
+
+  .Cardserv {
+    flex-wrap: wrap;
+    width: 20%;
+    overflow: hidden;
+    padding: 2rem;
+    cursor: pointer;
+    height: max-content;
+  }
+
+  .CardServiceImagen {
+    width: 80%;
+    height: 40vh;
+    overflow: hidden;
+    object-fit: contain;
+    border-radius: 2rem;
+    display: flex;
+  }
+
   .cardServTexto {
     width: 80%;
     height: max-content;
@@ -254,7 +349,7 @@
 }
 
 /*********** Proceso movil **********/
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .contenedorProceso {
     width: 98%;
     padding: 0;
@@ -292,6 +387,43 @@
     width: 80%;
     padding: 1rem;
     font-size: 1.2rem;
+  }
+}
+
+/*********** Proceso   tablet **********/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contenedorProceso {
+    width: 98%;
+    padding: 0;
+    justify-content: center;
+    height: max-content;
+    margin-top: 2rem;
+  }
+
+  .proceso {
+    display: flex;
+    height: max-content;
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .procesoImagen {
+    width: 50%;
+    display: flex;
+
+    justify-content: start;
+  }
+
+  .ProcesoText {
+    width: 50%;
+    margin: 0;
+  }
+
+  .itemProceso {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
   }
 }
 

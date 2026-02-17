@@ -88,7 +88,7 @@ export function Home() {
           // id="Proceso"
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
           className="proceso"
         >
@@ -100,7 +100,7 @@ export function Home() {
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8 }}
+                transition={{ delay: 0.8, ease: "easeOut" }}
                 className="itemProceso"
               >
                 <FaComments size={40} />
@@ -114,7 +114,7 @@ export function Home() {
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 }}
+                transition={{ delay: 1, ease: "easeOut" }}
                 className="itemProceso"
               >
                 <FaFileSignature size={40} />
