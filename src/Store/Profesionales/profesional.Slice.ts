@@ -84,7 +84,12 @@ export const profesionalSlice = createSlice({
       .addCase(miPerfilProfesional.fulfilled, (state, action) => {
         state.loading = false;
         state.usuario = action.payload;
-        state.turnosProfesional = action.payload.profesional.TurnosProfesional;
+        if (state.turnosProfesional) {
+          state.turnosProfesional =
+            action.payload.profesional.TurnosProfesional;
+        } else {
+          state.turnosProfesional = [];
+        }
       })
       .addCase(miPerfilProfesional.rejected, (state, action) => {
         state.loading = false;

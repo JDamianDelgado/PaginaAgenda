@@ -1,0 +1,375 @@
+/****************CALENDARIO ***************/
+/* ===============================
+   MODAL OVERLAY
+================================= */
+
+.calendarModal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+  text-align: center;
+}
+
+/* ===============================
+   CARD CONTENEDORA
+================================= */
+
+.calendarCard {
+  background: #ffffff;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+  background-color: #dcdcdd;
+}
+
+.calendarTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #1e293b;
+}
+
+/* ===============================
+   CALENDAR
+================================= */
+
+.calendarComponent {
+  width: 100%;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+}
+
+.react-calendar__tile--active {
+  background: #1e40af !important;
+  color: white !important;
+  border-radius: 8px;
+}
+
+.react-calendar__tile:hover {
+  background: #dbeafe;
+  border-radius: 8px;
+}
+
+/* ===============================
+   MENSAJES
+================================= */
+
+.calendarMessage {
+  margin-top: 15px;
+  color: #475569;
+  text-align: center;
+}
+
+.calendarError {
+  margin-top: 15px;
+  color: #dc2626;
+  font-weight: 500;
+  text-align: center;
+}
+
+.calendarWarning {
+  margin-top: 15px;
+  color: #d97706;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ===============================
+   HORARIOS
+================================= */
+
+.horariosTitle {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+}
+
+.horariosContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.horaBtn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #1e40af;
+  background: white;
+  color: #1e40af;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.horaBtn:hover {
+  background: #1e40af;
+  color: white;
+}
+
+.horaBtn.activa {
+  background: #1e40af;
+  color: white;
+}
+
+/* ===============================
+   BOTON CONFIRMAR
+================================= */
+
+.crearTurnoBtn {
+  margin-top: 25px;
+  width: 50%;
+  margin: 1rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #0f172a;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.crearTurnoBtn:hover {
+  background: #1e293b;
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+/* PC grande */
+@media (min-width: 1024px) {
+  .calendarCard {
+    max-width: 650px;
+    padding: 40px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .calendarCard {
+    padding: 25px;
+  }
+
+  .calendarTitle {
+    font-size: 20px;
+  }
+
+  .horaBtn {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+  .calendarCard {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .calendarTitle {
+    font-size: 18px;
+  }
+
+  .horariosContainer {
+    gap: 8px;
+  }
+
+  .horaBtn {
+    flex: 1 1 40%;
+    text-align: center;
+  }
+
+  .crearTurnoBtn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* ===============================
+   ANIMACION
+================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*******************Nuevo turno ***********/
+/* Contenedor principal */
+.nuevo-turno-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.nuevo-turno-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+/* Mensajes */
+.loading-text,
+.error-text,
+.no-profesionales {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.error-text {
+  color: #e74c3c;
+}
+
+/* Lista de profesionales */
+.profesionales-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Tarjeta profesional */
+.profesional-card {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.profesional-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profesional-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.profesional-info {
+  flex: 1;
+}
+
+.profesional-name {
+  font-size: 1.3rem;
+  margin: 0;
+  color: #34495e;
+}
+
+.profesional-especialidad {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0.3rem 0;
+}
+
+.profesional-descripcion {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.profesional-btn {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profesional-btn:hover {
+  background-color: #3498db;
+}
+.profesionales-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+/* Móviles <480px */
+@media (max-width: 480px) {
+  .profesional-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: max-content;
+  }
+
+  .profesional-avatar {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .profesionales-list {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+}
+
+/* Tablets 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .profesionales-list {
+  }
+  .profesional-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: max-content;
+  }
+}
+
+/* PC 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profesionales-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Monitores grandes >1024px */

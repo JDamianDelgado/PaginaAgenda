@@ -14,17 +14,17 @@
 
 /* ===== CONTENEDOR GENERAL ===== */
 /* ===== CONTENEDOR GENERAL ===== */
-.AgendaTurnos {
+/* .AgendaTurnos {
   max-width: 900px;
   margin: 40px auto;
   padding: 28px;
   background-color: #f4f7fc;
   border-radius: 16px;
   font-family: system-ui, sans-serif;
-}
+} */
 
 /* ===== TITULOS ===== */
-.AgendaTurnos h1 {
+/* .AgendaTurnos h1 {
   color: #5e80be;
   margin-bottom: 20px;
 }
@@ -32,34 +32,7 @@
 .AgendaTurnos h2 {
   color: #1f2937;
   margin: 24px 0 12px;
-}
-
-/* ===== CALENDARIO ===== */
-.react-calendar {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #dbe3f0;
-  border-radius: 16px;
-  padding: 16px;
-}
-
-.react-calendar__navigation button {
-  color: #5e80be;
-}
-
-.react-calendar__tile {
-  border-radius: 10px;
-  transition: all 0.2s ease;
-}
-
-.react-calendar__tile:hover {
-  background: #e8effa;
-}
-
-.react-calendar__tile--active {
-  background: #5e80be !important;
-  color: white;
-}
+} */
 
 /* ===== LISTA TURNOS ===== */
 .TurnosLista {
@@ -332,11 +305,11 @@ input:focus {
 
 /* Estados */
 .estado-reservado {
-  border-left-color: #1976d2;
+  border-left-color: #07c400;
 }
 
 .estado.reservado {
-  background: #1976d2;
+  background: #07c400;
 }
 
 .estado-cancelado {
@@ -348,9 +321,9 @@ input:focus {
 }
 
 .estado-completado {
-  border-left-color: #388e3c;
+  border-left-color: #4025bd;
 }
 
 .estado.completado {
-  background: #388e3c;
+  background: #4025bd;
 }

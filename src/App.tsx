@@ -5,6 +5,7 @@ import "./styles/Navbar.css";
 import "./styles/Home.css";
 import "./styles/footer.css";
 import "./styles/planes.css";
+import "./styles/nuevoturnoContainer.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Login } from "./Pages/Login";

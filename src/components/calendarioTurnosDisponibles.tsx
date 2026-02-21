@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useAppDispatch, useAppSelector } from "../Store/hooks.Redux";
 import {
@@ -10,14 +12,14 @@ import {
 
 interface Props {
   idProfesional: string;
+  onClose: () => void;
 }
 
-export function CalendarioTurnos({ idProfesional }: Props) {
+export function CalendarioTurnos({ idProfesional, onClose }: Props) {
   const dispatch = useAppDispatch();
   const { turnosDisponibles, loading, error } = useAppSelector(
     (state) => state.turnos,
   );
-
   const [fechaSelect, setFechaSelect] = useState<Date | null>(null);
   const [horaSelect, setHoraSelect] = useState<string | null>(null);
 
@@ -62,10 +64,12 @@ export function CalendarioTurnos({ idProfesional }: Props) {
       );
 
       setHoraSelect(null);
-      alert("Turno creado con éxito");
+      toast.success("Turno creado con éxito!");
+      setTimeout(() => onClose(), 3000);
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-      alert("Error al crear el turno");
+      toast.error("Error al crear el turno");
     }
   };
 
@@ -75,49 +79,70 @@ export function CalendarioTurnos({ idProfesional }: Props) {
   };
 
   return (
-    <div className="calendarioTurnos">
-      <Calendar
-        onChange={(value) => handleFechaChange(value as Date)}
-        value={fechaSelect}
-        minDate={new Date()}
-      />
+    <div className="calendarModal">
+      <div className="calendarCard">
+        <h2 className="calendarTitle">Seleccionar Turno</h2>
 
-      {loading && <p>Cargando horarios...</p>}
-      {error && <p className="error">{error}</p>}
+        <Calendar
+          className="calendarComponent"
+          onChange={(value) => handleFechaChange(value as Date)}
+          value={fechaSelect}
+          minDate={new Date()}
+        />
 
-      {fechaSelect && esFinDeSemana(fechaSelect) && (
-        <p className="noAtencion">No hay atención los fines de semana</p>
-      )}
+        {loading && <p className="calendarMessage">Cargando horarios...</p>}
+        {error && <p className="calendarError">{error}</p>}
 
-      {fechaSelect && !esFinDeSemana(fechaSelect) && (
-        <>
-          <h3>Horarios disponibles</h3>
+        {fechaSelect && esFinDeSemana(fechaSelect) && (
+          <p className="calendarWarning">No hay atención los fines de semana</p>
+        )}
 
-          {turnosDisponibles.length === 0 ? (
-            <p>No hay horarios disponibles</p>
-          ) : (
-            <div className="horariosContainer">
-              {turnosDisponibles.map((hora) => (
-                <button
-                  key={hora}
-                  className={`horaBtn ${hora === horaSelect ? "activa" : ""}`}
-                  onClick={() => setHoraSelect(hora)}
-                >
-                  {hora}
-                </button>
-              ))}
-            </div>
-          )}
-        </>
-      )}
-      <button
-        onClick={() => {
-          if (!horaSelect || !fechaSelect) return;
-          handleCrearTurno(horaSelect, fechaSelect, idProfesional);
-        }}
-      >
-        Crear turno
-      </button>
+        {fechaSelect && !esFinDeSemana(fechaSelect) && (
+          <>
+            <h3 className="horariosTitle">Horarios disponibles</h3>
+
+            {turnosDisponibles.length === 0 ? (
+              <p className="calendarMessage">No hay horarios disponibles</p>
+            ) : (
+              <div className="horariosContainer">
+                {turnosDisponibles.map((hora) => (
+                  <button
+                    key={hora}
+                    className={`horaBtn ${hora === horaSelect ? "activa" : ""}`}
+                    onClick={() => setHoraSelect(hora)}
+                  >
+                    {hora}
+                  </button>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        <button
+          className="crearTurnoBtn"
+          onClick={() => {
+            if (!horaSelect || !fechaSelect) return;
+            handleCrearTurno(horaSelect, fechaSelect, idProfesional);
+          }}
+        >
+          Confirmar Turno
+        </button>
+        <button className="crearTurnoBtn" onClick={onClose}>
+          Cancelar
+        </button>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </div>
     </div>
   );
 }

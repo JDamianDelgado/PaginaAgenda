@@ -8,13 +8,11 @@ export function Navbar() {
   const { role, token } = useAppSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [openMiCuenta, setOpenMiCuenta] = useState(false);
   const [open, setOpen] = useState(false);
   const isAuth = Boolean(token);
 
   const handleLogout = () => {
     dispatch(logout());
-    setOpenMiCuenta(false);
     navigate("/login");
   };
 
@@ -49,37 +47,69 @@ export function Navbar() {
         )}
 
         {isAuth && (
-          <>
-            <Link to="/planes">Planes</Link>
+          <ul className={`nav-links ${open ? "active" : ""}`}>
+            <button
+              className="NavbarButtonmiCuenta"
+              onClick={() => setOpen(!open)}
+            >
+              Mi cuenta
+            </button>
             {role === "PACIENTE" && (
               <>
-                <button
-                  className="NavbarButton"
-                  onClick={() => setOpenMiCuenta(!openMiCuenta)}
-                >
-                  Mi cuenta
-                </button>
-
-                {openMiCuenta && (
-                  <div className="dropdown">
-                    <Link to="/nuevoTurno">Agendar sesión</Link>
-                    <Link to="/misTurnos">Mis Turnos</Link>
-                    <Link to="/miCuenta">Mis datos</Link>
-                  </div>
+                {open && (
+                  <>
+                    <Link to="/planes" onClick={() => setOpen(false)}>
+                      Planes
+                    </Link>
+                    <Link to="/nuevoTurno" onClick={() => setOpen(false)}>
+                      Agendar sesión
+                    </Link>
+                    <Link to="/misTurnos" onClick={() => setOpen(false)}>
+                      Mis Turnos
+                    </Link>
+                    <Link to="/miCuenta" onClick={() => setOpen(false)}>
+                      Mis datos
+                    </Link>
+                    <button
+                      className="NavbarButtonCerarSesion"
+                      onClick={handleLogout}
+                    >
+                      Cerrar sesión
+                    </button>
+                  </>
                 )}
               </>
             )}
             {role === "PROFESIONAL" && (
               <>
-                <Link to="/miPerfil">Mi Perfil</Link>
-                <Link to="/miAgenda">Mi agenda</Link>
+                <Link to="/miPerfil" onClick={() => setOpen(false)}>
+                  Mi Perfil
+                </Link>
+                <Link to="/miAgenda" onClick={() => setOpen(false)}>
+                  Mi agenda
+                </Link>
+                <button
+                  className="NavbarButtonCerarSesion"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </button>
               </>
             )}
-            {role === "ADMIN" && <Link to="/panelAdmin">Panel Admin</Link>}
-            <button className="NavbarButton" onClick={handleLogout}>
-              Cerrar sesión
-            </button>{" "}
-          </>
+            {role === "ADMIN" && (
+              <>
+                <Link to="/panelAdmin" onClick={() => setOpen(false)}>
+                  Panel Admin
+                </Link>
+                <button
+                  className="NavbarButtonCerarSesion"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </button>{" "}
+              </>
+            )}
+          </ul>
         )}
       </div>
     </nav>

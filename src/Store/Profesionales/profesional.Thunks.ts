@@ -40,7 +40,7 @@ export const miPerfilProfesional = createAsyncThunk<
 >("profesional/miPerfilProfesional", async (_, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch(`${API_URL}/profesional/miPerfil`, {
+    const response = await fetch(`${API_URL}/profesional/miperfil`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
