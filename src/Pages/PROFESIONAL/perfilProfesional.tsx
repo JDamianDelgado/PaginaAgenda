@@ -8,13 +8,17 @@ import { mensajesProfesionalMock } from "../../Mock/mensajeProfesional.mock";
 import { pacientesProfesionalMock } from "../../Mock/misPacientes.mock";
 import { MessageCard } from "../../components/messageComponent";
 import { PacienteCard } from "../../components/pacientesCard";
+import { misHorariosProfesional } from "../../Store/HorariosProfesional/HorarioProfesional.Thunks";
+import { Link } from "react-router-dom";
+import { MisHorariosProfesional } from "./misHorariosProfesional";
 export function PerfilProfesional() {
   const dispatch = useAppDispatch();
   const { usuario, loading, error } = useAppSelector(
     (state) => state.profesionales,
   );
+  const { misHorarios } = useAppSelector((state) => state.horarios);
   const { token } = useAppSelector((state) => state.auth);
-
+  const [viewHours, setViewHours] = useState(false);
   const [viewForm, setViewForm] = useState(false);
   const [viewFormUpdate, setViewFormUpdate] = useState(false);
 
@@ -23,6 +27,7 @@ export function PerfilProfesional() {
   useEffect(() => {
     if (token) {
       dispatch(miPerfilProfesional());
+      dispatch(misHorariosProfesional());
     }
   }, [token, dispatch]);
 
@@ -60,12 +65,12 @@ export function PerfilProfesional() {
 
             <p>{usuario.profesional?.descripcion}</p>
 
-            <span className="PerfilProfesionalBadge">
+            <Link to="/MiAgenda" className="PerfilProfesionalBadge">
               Turnos: {usuario.profesional?.TurnosProfesional.length || 0}
-            </span>
+            </Link>
 
             <div className="PerfilProfesionalActions">
-              <button onClick={() => setViewFormUpdate(true)}>
+              <button onClick={() => setViewFormUpdate(!viewFormUpdate)}>
                 Editar perfil
               </button>
             </div>
@@ -76,6 +81,20 @@ export function PerfilProfesional() {
       {viewFormUpdate && (
         <UpdateFormPerfilProfesional setViewForm={setViewFormUpdate} />
       )}
+
+      <div>
+        <button
+          className="PerfilProfesionalActions"
+          onClick={() => setViewHours(!viewHours)}
+        >
+          {viewHours ? "Ocultar" : "Ver Mis Horarios"}
+        </button>
+        {viewHours && (
+          <MisHorariosProfesional
+            misHorarios={misHorarios}
+          ></MisHorariosProfesional>
+        )}
+      </div>
       <div>
         <h1>Mensajes</h1>
         {mensajesProfesionalMock.map((msg) => (

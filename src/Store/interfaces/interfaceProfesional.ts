@@ -1,3 +1,4 @@
+import type { interfaceMisHorariosProfesional } from "./interfaceHorarios";
 import type { InterfaceTurno } from "./interfaceTurnos";
 import type { InterfaceUsuario } from "./interfaceUsers";
 
@@ -9,7 +10,7 @@ export interface InterfaceProfesional {
   activo: boolean;
   imagenUrl: string;
   TurnosProfesional: InterfaceTurno[] | [];
-  Horario: interfaceHorarios[] | [];
+  Horario: interfaceMisHorariosProfesional[] | [];
 }
 
 export interface createPerfilProfesional {

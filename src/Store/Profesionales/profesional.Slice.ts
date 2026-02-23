@@ -101,6 +101,3 @@ export const profesionalSlice = createSlice({
       });
   },
 });
-//// corregir la importaciones de la interfaces al modificar los datos que traia mi perfil profesional se boicoteo todo.. arreglarlos
-
-// aplicar en send email en caso de cancelar turno por un motiv en particular

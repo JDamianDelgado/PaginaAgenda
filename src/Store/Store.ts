@@ -3,6 +3,7 @@ import { authSlice } from "./auth/auth.Slice";
 import { usuariosSlice } from "./Usuarios/usuarios.Slice";
 import { profesionalSlice } from "./Profesionales/profesional.Slice";
 import { turnosSlice } from "./Turnos/Turnos.Slice";
+import { horarioProfesionalSlice } from "./HorariosProfesional/HorarioProfesional.Slice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     usuarios: usuariosSlice.reducer,
     profesionales: profesionalSlice.reducer,
     turnos: turnosSlice.reducer,
+    horarios: horarioProfesionalSlice.reducer,
   },
 });
 
