@@ -19,10 +19,11 @@ export function PerfilProfesional() {
   const [viewHours, setViewHours] = useState(false);
   const [viewForm, setViewForm] = useState(false);
   const [viewFormUpdate, setViewFormUpdate] = useState(false);
+  const profesional = usuario?.profesional;
 
-  const tienePerfil = Boolean(usuario?.profesional?.idProfesional);
+  const tienePerfil = Boolean(profesional?.idProfesional);
   const turnosChat =
-    usuario?.profesional?.TurnosProfesional.filter(
+    profesional?.TurnosProfesional.filter(
       (turno) => turno.estado !== "CANCELADO",
     ).map((turno) => ({
       idTurno: turno.idTurno,
@@ -58,23 +59,23 @@ export function PerfilProfesional() {
           <img
             className="PerfilProfesionalImg"
             src={
-              usuario.profesional?.imagenUrl ||
+              profesional?.imagenUrl ||
               "https://clipart-library.com/data_images/100672.png"
             }
-            alt={usuario.email}
+            alt={usuario?.email ?? "Perfil profesional"}
           />
 
           <div className="PerfilProfesionalInfo">
             <h2>
-              {usuario.nombre} {usuario.apellido}
+              {usuario?.nombre ?? ""} {usuario?.apellido ?? ""}
             </h2>
 
-            <h3>{usuario.profesional?.especialidad}</h3>
+            <h3>{profesional?.especialidad}</h3>
 
-            <p>{usuario.profesional?.descripcion}</p>
+            <p>{profesional?.descripcion}</p>
 
             <Link to="/MiAgenda" className="PerfilProfesionalBadge">
-              Turnos: {usuario.profesional?.TurnosProfesional.length || 0}
+              Turnos: {profesional?.TurnosProfesional.length || 0}
             </Link>
 
             <div className="PerfilProfesionalActions">
