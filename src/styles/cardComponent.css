@@ -1,82 +1,90 @@
-/* ===== CARD TURNO ===== */
-
 .CardTurno {
-  background: #a8bee8;
-  box-shadow: 0 4px 8px black;
-  border-radius: 10%;
-  padding: 1rem 1rem;
-  gap: 2rem;
-  margin-bottom: 14px;
-  /* box-shadow: 0 4px 10px rgba(94, 128, 190, 0.12); */
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  background: linear-gradient(165deg, #edf3ff, #dbe8ff);
+  border: 1px solid #cadbf8;
+  border-radius: 16px;
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+  box-shadow: 0 10px 20px rgba(45, 69, 118, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .CardTurno:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(94, 128, 190, 0.2);
+  box-shadow: 0 14px 28px rgba(45, 69, 118, 0.21);
 }
 
-/* ===== FECHA ===== */
+.CardTurno h2 {
+  margin: 0;
+  color: #253a62;
+  font-size: 1.15rem;
+}
+
 .CardTurno h3 {
-  margin: 0 0 6px;
-  color: #000000;
-  font-size: 1.1rem;
+  margin: 2px 0 0;
+  color: #2e466f;
+  font-size: 1rem;
 }
 
 .CardTurno img {
-  border-radius: 30%;
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #6e8fc8;
 }
-/* ===== INFO ===== */
+
 .CardTurno p {
-  margin: 4px 0;
-  color: #4b5563;
-  font-size: 0.95rem;
+  margin: 0;
+  color: #4a5f86;
 }
 
-/* ===== ESTADO ===== */
-.CardTurno small {
-  display: inline-block;
-  margin-top: 8px;
-  font-weight: 600;
-  font-size: 0.85rem;
-}
-
-.estado {
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-.estado.RESERVADO {
-  background: #e8f5e9;
-  color: #4caf50;
-}
-
-.estado.CANCELADO {
-  background: #fdecea;
-  color: #e57373;
-}
-
-.estado.COMPLETADO {
-  background: #f0f0f0;
-  color: #8a8a8a;
-}
-
-/* ===== BOTÓN ===== */
 .CardTurno button {
-  margin-top: 12px;
-  background: rgb(232, 164, 164);
-  border: 1px solid #e57373;
-  color: #f7f6f6;
-  padding: 6px 16px;
+  border: none;
   border-radius: 8px;
+  padding: 8px 10px;
+  background: #d57676;
+  color: #fff;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
 }
 
 .CardTurno button:hover {
-  background: #e57373;
-  color: white;
+  background: #c75f5f;
+}
+
+.CardTurno .CardTurnoChatBtn {
+  background: #4b72b8;
+}
+
+.CardTurno .CardTurnoChatBtn:hover {
+  background: #3e62a2;
+}
+
+.estado {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 2px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.estado.RESERVADO,
+.estado.reservado {
+  background: #d9f5e4;
+  color: #0d6a3e;
+}
+
+.estado.CANCELADO,
+.estado.cancelado {
+  background: #ffe5e5;
+  color: #a02f2f;
+}
+
+.estado.COMPLETADO,
+.estado.completado {
+  background: #e5ebff;
+  color: #325192;
 }

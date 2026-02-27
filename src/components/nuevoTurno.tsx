@@ -60,6 +60,7 @@ export function NuevoTurno() {
 
       {profesionalSeleccionado && (
         <CalendarioTurnos
+          key={profesionalSeleccionado}
           idProfesional={profesionalSeleccionado}
           onClose={() => setProfesionalSeleccionado("")}
         />

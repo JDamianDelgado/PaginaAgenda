@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "./auth.Thunks";
+import {
+  forgotPasswordUser,
+  loginUser,
+  registerUser,
+  resetPasswordUser,
+} from "./auth.Thunks";
 import { decodeTokenRole } from "../../utils/decodeToken";
 import { isTokenExpired } from "../../utils/tokenExpired";
 
@@ -86,6 +91,36 @@ export const authSlice = createSlice({
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message ?? null;
+      })
+      .addCase(forgotPasswordUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(forgotPasswordUser.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(forgotPasswordUser.rejected, (state, action) => {
+        state.loading = false;
+        if (action.payload) {
+          state.error = action.payload.message;
+        } else {
+          state.error = action.error.message ?? null;
+        }
+      })
+      .addCase(resetPasswordUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resetPasswordUser.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(resetPasswordUser.rejected, (state, action) => {
+        state.loading = false;
+        if (action.payload) {
+          state.error = action.payload.message;
+        } else {
+          state.error = action.error.message ?? null;
+        }
       });
   },
 });

@@ -1,0 +1,81 @@
+.RecoveryPage {
+  min-height: 74vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.RecoveryCard {
+  width: min(460px, 96%);
+  background: linear-gradient(165deg, #eef3ff, #dbe7fd);
+  border: 1px solid #c9daf8;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  animation: fadeUp 0.35s ease;
+}
+
+.RecoveryCard h1 {
+  margin: 0 0 10px;
+  color: #243d67;
+}
+
+.RecoveryCard p {
+  margin: 0 0 12px;
+  color: #4a5f85;
+}
+
+.RecoveryForm {
+  display: grid;
+  gap: 8px;
+}
+
+.RecoveryForm label {
+  color: #33507f;
+  font-weight: 700;
+}
+
+.RecoveryForm input {
+  border: 1px solid #bdd0f3;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.RecoveryForm input:focus {
+  outline: none;
+  border-color: #5e80be;
+  box-shadow: 0 0 0 3px rgba(94, 128, 190, 0.2);
+}
+
+.RecoveryForm button {
+  margin-top: 4px;
+  border: none;
+  border-radius: 10px;
+  background: #4f74b8;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.RecoveryForm button:hover {
+  background: #3f62a2;
+}
+
+.RecoveryForm button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.RecoveryError {
+  margin-top: 10px;
+  color: #b63232;
+  font-weight: 600;
+}
+
+.RecoveryInfo {
+  margin-top: 10px;
+  color: #2f5f28;
+  font-weight: 600;
+}

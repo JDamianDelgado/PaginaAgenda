@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #d9e6ff;
+  --bg-surface: #eef3ff;
+  --bg-card: #ffffff;
+  --color-primary: #2f4a7a;
+  --color-secondary: #5e80be;
+  --color-text: #1f2a44;
+  --color-muted: #5f6c88;
+  --color-danger: #d14a4a;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-soft: 0 12px 26px rgba(37, 62, 108, 0.14);
+  --shadow-hover: 0 16px 30px rgba(37, 62, 108, 0.2);
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", "Inter", "Calibri", sans-serif;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(171, 196, 244, 0.56), transparent 36%),
+    radial-gradient(circle at 95% 100%, rgba(163, 191, 246, 0.5), transparent 40%),
+    var(--bg-main);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}

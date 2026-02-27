@@ -5,7 +5,6 @@ import {
   editPerfilProfesional,
   miPerfilProfesional,
 } from "../../Store/Profesionales/profesional.Thunks";
-import "../../styles/panelProfesional.css";
 
 interface Props {
   setViewForm: (value: boolean) => void;
@@ -23,16 +22,20 @@ export function UpdateFormPerfilProfesional({ setViewForm }: Props) {
     descripcion: profesional?.descripcion || "",
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     const { name, value } = e.target;
     setDataPerfil({ ...dataPerfil, [name]: value });
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    await dispatch(editPerfilProfesional(dataPerfil));
-    setViewForm(false);
-    dispatch(miPerfilProfesional());
+    const result = await dispatch(editPerfilProfesional(dataPerfil));
+    if (editPerfilProfesional.fulfilled.match(result)) {
+      setViewForm(false);
+      dispatch(miPerfilProfesional());
+    }
   }
 
   return (
@@ -45,6 +48,7 @@ export function UpdateFormPerfilProfesional({ setViewForm }: Props) {
           name="imagenUrl"
           value={dataPerfil.imagenUrl}
           onChange={handleChange}
+          placeholder="https://..."
         />
 
         <label>Especialidad</label>
@@ -52,16 +56,24 @@ export function UpdateFormPerfilProfesional({ setViewForm }: Props) {
           name="especialidad"
           value={dataPerfil.especialidad}
           onChange={handleChange}
+          required
         />
 
-        <label>Descripción</label>
-        <input
+        <label>Descripcion</label>
+        <textarea
           name="descripcion"
           value={dataPerfil.descripcion}
           onChange={handleChange}
+          rows={4}
+          required
         />
 
-        <button type="submit">Actualizar perfil</button>
+        <div className="perfil-form-actions">
+          <button type="submit">Actualizar perfil</button>
+          <button type="button" onClick={() => setViewForm(false)}>
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );

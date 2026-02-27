@@ -11,7 +11,12 @@ import {
 export const turnosSlice = createSlice({
   name: "turnos",
   initialState: interfaceStateTurnos,
-  reducers: {},
+  reducers: {
+    clearTurnosDisponibles: (state) => {
+      state.turnosDisponibles = [];
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(TurnosProfesionalDisponible.pending, (state) => {
@@ -108,4 +113,5 @@ export const turnosSlice = createSlice({
   },
 });
 
+export const { clearTurnosDisponibles } = turnosSlice.actions;
 export default turnosSlice.reducer;

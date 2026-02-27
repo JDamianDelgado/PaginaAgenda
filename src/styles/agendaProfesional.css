@@ -1,0 +1,44 @@
+.AgendaProfesional {
+  max-width: 980px;
+  margin: 26px auto;
+  padding: 0 14px;
+}
+
+.AgendaProfesionalHeader {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.AgendaProfesionalHeader h1 {
+  margin: 0;
+  color: #1f2a44;
+}
+
+.AgendaProfesionalHeader p {
+  margin: 0;
+  color: #4f6288;
+  font-weight: 600;
+}
+
+.AgendaProfesionalList {
+  display: grid;
+  gap: 14px;
+}
+
+.AgendaProfesionalEmpty {
+  background: #eef2fb;
+  border: 1px dashed #95addc;
+  border-radius: 14px;
+  padding: 16px;
+  color: #2e436d;
+}
+
+@media (max-width: 700px) {
+  .AgendaProfesionalHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

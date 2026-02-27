@@ -84,17 +84,21 @@ export const profesionalSlice = createSlice({
       .addCase(miPerfilProfesional.fulfilled, (state, action) => {
         state.loading = false;
         state.usuario = action.payload;
-        if (state.turnosProfesional) {
-          state.turnosProfesional =
-            action.payload.profesional.TurnosProfesional;
-        } else {
-          state.turnosProfesional = [];
-        }
+        state.turnosProfesional =
+          action.payload.profesional?.TurnosProfesional ?? [];
       })
       .addCase(miPerfilProfesional.rejected, (state, action) => {
         state.loading = false;
         if (action.payload) {
-          state.error = action.payload.message;
+          const message = action.payload.message;
+          const notFound = message.toLowerCase().includes("perfil profesional no encontrado");
+          if (notFound) {
+            state.error = null;
+            state.usuario = null;
+            state.turnosProfesional = [];
+          } else {
+            state.error = message;
+          }
         } else {
           state.error = action.error.message ?? null;
         }

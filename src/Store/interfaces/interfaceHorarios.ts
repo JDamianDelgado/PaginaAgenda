@@ -1,5 +1,4 @@
 export interface createHorarioProfesional {
-  idHorario: string;
   dia: string;
   horaInicio: string;
   horaFin: string;

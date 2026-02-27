@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../Store/hooks.Redux";
-import { creatPerfilProfesional } from "../../Store/Profesionales/profesional.Thunks";
+import {
+  creatPerfilProfesional,
+  miPerfilProfesional,
+} from "../../Store/Profesionales/profesional.Thunks";
 import "../../styles/panelProfesional.css";
+
 interface Props {
   setViewForm: (value: boolean) => void;
 }
@@ -16,15 +20,20 @@ export function FormPerfilProfesional({ setViewForm }: Props) {
     activo: true,
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     const { name, value } = e.target;
     setDataPerfil({ ...dataPerfil, [name]: value });
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    await dispatch(creatPerfilProfesional(dataPerfil));
-    setViewForm(false);
+    const result = await dispatch(creatPerfilProfesional(dataPerfil));
+    if (creatPerfilProfesional.fulfilled.match(result)) {
+      await dispatch(miPerfilProfesional());
+      setViewForm(false);
+    }
   }
 
   return (
@@ -35,8 +44,11 @@ export function FormPerfilProfesional({ setViewForm }: Props) {
         <label>Imagen de perfil (URL)</label>
         <input
           name="imagenUrl"
+          type="url"
           value={dataPerfil.imagenUrl}
           onChange={handleChange}
+          placeholder="https://..."
+          required
         />
 
         <label>Especialidad</label>
@@ -44,16 +56,26 @@ export function FormPerfilProfesional({ setViewForm }: Props) {
           name="especialidad"
           value={dataPerfil.especialidad}
           onChange={handleChange}
+          placeholder="Psicologia clinica"
+          required
         />
 
-        <label>Descripción</label>
-        <input
+        <label>Descripcion</label>
+        <textarea
           name="descripcion"
           value={dataPerfil.descripcion}
           onChange={handleChange}
+          rows={4}
+          placeholder="Describe tu enfoque terapeutico"
+          required
         />
 
-        <button type="submit">Guardar perfil</button>
+        <div className="perfil-form-actions">
+          <button type="submit">Guardar perfil</button>
+          <button type="button" onClick={() => setViewForm(false)}>
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );

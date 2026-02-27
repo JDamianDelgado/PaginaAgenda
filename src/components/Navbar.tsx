@@ -1,25 +1,48 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../Store/hooks.Redux";
-import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../Store/hooks.Redux";
 import { logout } from "../Store/auth/auth.Slice";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { getMyConversations } from "../Store/Chat/chat.thunks";
+import { FiBell } from "react-icons/fi";
 
 export function Navbar() {
   const { role, token } = useAppSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const { conversaciones } = useAppSelector((state) => state.chat);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const isAuth = Boolean(token);
+  const canUseChat = role === "PACIENTE" || role === "PROFESIONAL";
+
+  const unreadCount = useMemo(
+    () =>
+      conversaciones.reduce((acum, conversation) => acum + (conversation.noLeidos || 0), 0),
+    [conversaciones],
+  );
+
+  useEffect(() => {
+    if (!isAuth || !canUseChat) {
+      return;
+    }
+
+    dispatch(getMyConversations());
+    const interval = window.setInterval(() => {
+      dispatch(getMyConversations());
+    }, 30000);
+
+    return () => window.clearInterval(interval);
+  }, [dispatch, isAuth, canUseChat]);
 
   const handleLogout = () => {
     dispatch(logout());
+    setOpen(false);
     navigate("/login");
   };
 
   return (
     <nav className="Navbar">
       <div className="NavbarLogo">
-        <Link to="/">
+        <Link to="/" onClick={() => setOpen(false)}>
           <img src="image.png" alt="Power of mind" />
         </Link>
       </div>
@@ -53,6 +76,12 @@ export function Navbar() {
               onClick={() => setOpen(!open)}
             >
               Mi cuenta
+              {canUseChat && (
+                <span className="NavbarNotification" aria-label="Mensajes sin leer">
+                  <FiBell />
+                  {unreadCount > 0 && <strong>{unreadCount}</strong>}
+                </span>
+              )}
             </button>
             {role === "PACIENTE" && (
               <>
@@ -66,6 +95,9 @@ export function Navbar() {
                     </Link>
                     <Link to="/misTurnos" onClick={() => setOpen(false)}>
                       Mis Turnos
+                      {unreadCount > 0 && (
+                        <span className="NavbarInlineBadge">{unreadCount}</span>
+                      )}
                     </Link>
                     <Link to="/miCuenta" onClick={() => setOpen(false)}>
                       Mis datos
@@ -87,6 +119,9 @@ export function Navbar() {
                 </Link>
                 <Link to="/miAgenda" onClick={() => setOpen(false)}>
                   Mi agenda
+                  {unreadCount > 0 && (
+                    <span className="NavbarInlineBadge">{unreadCount}</span>
+                  )}
                 </Link>
                 <button
                   className="NavbarButtonCerarSesion"

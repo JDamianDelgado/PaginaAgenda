@@ -17,7 +17,7 @@ export function PlanCard({ plan }: { plan: Plan }) {
   const [rotar, setRotar] = useState(false);
 
   return (
-    <section className="contenedorPlanes">
+    <article className="planCardWrap">
       <div onClick={() => setRotar((rot) => !rot)} className="cardPlanes">
         {!rotar ? (
           <motion.div
@@ -54,6 +54,6 @@ export function PlanCard({ plan }: { plan: Plan }) {
           </motion.div>
         )}
       </div>
-    </section>
+    </article>
   );
 }

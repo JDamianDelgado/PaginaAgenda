@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks.Redux";
 import { useNavigate } from "react-router-dom";
 import { ViewMoreUsers } from "../../components/viewMoreUsers";
-import { deleteUser, allUsers } from "../../Store/Usuarios/usuarios.Thunks";
+import { allUsers } from "../../Store/Usuarios/usuarios.Thunks";
 import "../../styles/panelAdmin.css";
 export function PanelAdmin() {
   const navigate = useNavigate();
@@ -17,14 +17,6 @@ export function PanelAdmin() {
 
   const pacientes = usuarios.filter((u) => u.role === "PACIENTE");
   const profesionales = usuarios.filter((u) => u.role === "PROFESIONAL");
-
-  const deleteUsuario = (id: string, name: string) => {
-    dispatch(deleteUser({ id }));
-    if (error) {
-      alert(`Error al eliminar el usuario: ${name}`);
-    }
-    alert("Usuario eliminado correctamente: " + name);
-  };
 
   useEffect(() => {
     dispatch(allUsers());
@@ -54,13 +46,7 @@ export function PanelAdmin() {
                   className="AdminBtnEdit"
                   onClick={() => setSelectedUser(user)}
                 >
-                  Editar
-                </button>
-                <button
-                  className="AdminBtnDelete"
-                  onClick={() => deleteUsuario(user.idUser, user.nombre)}
-                >
-                  Eliminar
+                  Gestionar
                 </button>
               </div>
             </li>
@@ -82,13 +68,7 @@ export function PanelAdmin() {
                   className="AdminBtnEdit"
                   onClick={() => setSelectedUser(user)}
                 >
-                  Editar
-                </button>
-                <button
-                  className="AdminBtnDelete"
-                  onClick={() => deleteUsuario(user.idUser, user.nombre)}
-                >
-                  Eliminar
+                  Gestionar
                 </button>
               </div>
             </li>
@@ -97,18 +77,7 @@ export function PanelAdmin() {
       </section>
 
       {selectedUser && (
-        <>
-          <ViewMoreUsers
-            users={selectedUser}
-            onClose={() => setSelectedUser(null)}
-          />
-          <button
-            className="AdminCloseBtn"
-            onClick={() => setSelectedUser(null)}
-          >
-            Cerrar
-          </button>
-        </>
+        <ViewMoreUsers users={selectedUser} onClose={() => setSelectedUser(null)} />
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "../Store/hooks.Redux";
 import { loginUser, registerUser } from "../Store/auth/auth.Thunks";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Login() {
   const dispatch = useAppDispatch();
@@ -123,7 +123,7 @@ export function Login() {
           <button type="submit">Iniciar sesion</button>
 
           <span onClick={() => setView(true)}>Registrate</span>
-          <span>Haz olvidado tu contrasena?</span>
+          <Link to="/forgot-password">Haz olvidado tu contrasena?</Link>
         </form>
       ) : (
         <form onSubmit={handleSubmitRegister} className="contenedorRegistro">

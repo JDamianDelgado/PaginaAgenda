@@ -1,485 +1,221 @@
 .contenedorHome {
-  min-height: 100vh;
-  width: 100%;
+  width: min(1200px, 98%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #d9e6ff;
-  overflow: hidden;
+  gap: 46px;
+  padding-bottom: 24px;
 }
 
-/* carrousel */
 .carruselServicios {
   position: relative;
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  margin: 1.5rem 0;
+  min-height: 66vh;
+  border-radius: 22px;
   overflow: hidden;
-  justify-content: center;
-  align-items: end;
+  box-shadow: 0 22px 45px rgba(28, 50, 91, 0.25);
 }
+
 .carruselServicios img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-}
-.PresentacionItem {
-  background-color: #d9e6ff8b;
-  width: max-content;
-  z-index: 2;
-  height: 30%;
-  margin-bottom: 2rem;
-  justify-content: center;
-  border-radius: 2rem;
-  box-shadow: 0 2px 10px white;
-  align-items: center;
-  overflow: hidden;
-  display: flex;
-  padding: 1rem;
-  position: relative;
-  flex-direction: column;
-  color: rgb(0, 0, 0);
-}
-
-.textoPresentacion {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  text-align: center;
-  justify-content: end;
-  align-self: end;
-  color: rgb(237, 237, 245);
 }
 
 .carruselServicios::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
-}
-/* carrousel movil  */
-@media (min-width: 480px) and (max-width: 768px) {
-  .contenedorHome {
-    max-width: 100%;
-    border-radius: 2rem;
-  }
-  .carruselServicios {
-    width: 98%;
-  }
-  .PresentacionItem {
-    margin: 2rem;
-    height: max-content;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
-  }
-  .PresentacionItem h2 {
-    font-size: x-large;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .PresentacionItem p {
-    text-align: center;
-  }
+  background: linear-gradient(110deg, rgba(16, 34, 65, 0.5), rgba(16, 34, 65, 0.2));
 }
 
-/******** nuestros servicios *********/
-.contenedorNuestrosServicios {
+.PresentacionItem {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  z-index: 2;
+  max-width: min(550px, 90%);
+  background: rgba(229, 238, 255, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 14px 30px rgba(18, 33, 61, 0.24);
+  backdrop-filter: blur(4px);
+}
+
+.PresentacionItem h2 {
+  margin: 0 0 8px;
+  color: #1e2f52;
+}
+
+.PresentacionItem p {
+  margin: 0;
+  color: #32466c;
+  line-height: 1.5;
+}
+
+.contenedorNuestrosServicios,
+.opiniones {
+  animation: fadeUp 0.55s ease;
+}
+
+.contenedorNuestrosServicios h2,
+.opiniones h1,
+.textoProceso {
   text-align: center;
-  margin-top: 2rem;
-  height: max-content;
+  color: #1f2a44;
+  margin: 0 0 14px;
+  letter-spacing: 0.01em;
 }
-.contenedorNuestrosServicios h2 {
-  font-size: 2rem;
-}
+
 .nuestrosServicios {
-  display: flex;
-  margin-top: 2rem;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
 }
 
 .Cardserv {
-  padding: 0.5rem;
-  width: 25%;
-  height: auto;
-  justify-content: center;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #92b1eea4;
-  border-radius: 2rem;
-  box-shadow: 0 5px 10px black;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  cursor: pointer;
-}
-.Cardserv img {
-  width: 100%;
-  height: 40vh;
-  overflow: hidden;
-  object-fit: cover;
-  border-radius: 2rem;
-  display: flex;
-}
-.cardServTexto {
-  width: 80%;
-  height: 30vh;
-  margin-top: 1rem;
-}
-.cardServTexto p {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-.Cardserv button {
-  display: none;
-  all: unset;
-  padding: 1.5rem;
-  border-radius: 2rem;
-  background-color: rgba(0, 0, 241, 0.69);
-  color: white;
-  margin: 1rem;
+  background: linear-gradient(165deg, #edf3ff, #d4e2fb);
+  border: 1px solid #c6d8f8;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .Cardserv:hover {
-  box-shadow: 2px 5px 20px black;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
-/********* Nuestrs servicios movil *********/
-@media (max-width: 480px) {
-  .contenedorNuestrosServicios {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  .contenedorNuestrosServicios h2 {
-    font-size: 1.5rem;
-  }
-  .nuestrosServicios {
-    display: flex;
-    margin-top: 1rem;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .Cardserv {
-    width: 80%;
-    height: max-content;
-    padding: 1rem;
-    cursor: pointer;
-  }
-
-  .Cardserv img {
-    width: 70vw;
-    height: 30vh;
-  }
-  .cardServTexto {
-    width: 80%;
-    height: max-content;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  .cardServTexto p {
-    padding: 0;
-    margin: 0;
-  }
-  .Cardserv button {
-    display: none;
-  }
-}
-
-/********* Nuestrs servicios pc  *********/
-@media (min-width: 480px) and (max-width: 1024px) {
-  .contenedorNuestrosServicios {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  .contenedorNuestrosServicios h2 {
-    font-size: 1.5rem;
-  }
-  .nuestrosServicios {
-    display: flex;
-    margin-top: 1rem;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .Cardserv {
-    width: 80%;
-    height: max-content;
-    padding: 1rem;
-    cursor: pointer;
-  }
-
-  .Cardserv img {
-    width: 70vw;
-    height: 30vh;
-  }
-  .cardServTexto {
-    width: 80%;
-    height: max-content;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  .cardServTexto p {
-    padding: 0;
-    margin: 0;
-  }
-  .Cardserv button {
-    display: none;
-  }
-}
-
-/* macbook */
-@media (min-width: 1024px) {
-  .contenedorNuestrosServicios {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    margin-top: 1rem;
-  }
-
-  .nuestrosServicios {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    align-items: center;
-  }
-
-  .Cardserv {
-    flex-wrap: wrap;
-    width: 20%;
-    overflow: hidden;
-    padding: 2rem;
-    cursor: pointer;
-    height: max-content;
-  }
-
-  .CardServiceImagen {
-    width: 80%;
-    height: 40vh;
-    overflow: hidden;
-    object-fit: contain;
-    border-radius: 2rem;
-    display: flex;
-  }
-
-  .cardServTexto {
-    width: 80%;
-    height: max-content;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  .cardServTexto p {
-    padding: 0;
-    margin: 0;
-  }
-  .Cardserv button {
-    display: none;
-  }
-}
-
-/********* Proceso *********/
-.contenedorProceso {
-  background-color: #abc4f4;
-  border-radius: 2rem;
-  width: 80%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  margin-top: 6rem;
-}
-.contenedorProceso button {
-  all: unset;
-  margin: 2rem;
-  padding: 2rem;
-  border-radius: 2rem;
-  color: white;
-  width: 30%;
-  text-align: center;
-  font-size: 1.5rem;
-  background-color: rgb(100, 156, 246);
-}
-.proceso {
-  display: flex;
-  height: 90%;
-  width: 85%;
-}
-.proceso img {
-  height: 100%;
-  width: 90%;
-  overflow: hidden;
+.CardServiceImagen img {
+  width: 100%;
+  height: 210px;
   object-fit: cover;
-  border-radius: 2rem;
-  box-shadow: 0 5px 10px black;
+  border-radius: 14px;
 }
 
-.ProcesoText {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  justify-content: center;
+.cardServTexto h2 {
+  margin: 14px 0 6px;
+  color: #253a61;
 }
+
+.cardServTexto h3 {
+  margin: 0 0 8px;
+  color: #4f6ea8;
+}
+
+.cardServTexto p {
+  color: #42577f;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.Cardserv button {
+  display: none;
+}
+
+.contenedorProceso {
+  background: linear-gradient(160deg, #abc4f4, #93b1ea);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 38px rgba(41, 66, 115, 0.24);
+}
+
+.proceso {
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.proceso img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(20, 37, 68, 0.3);
+}
+
 .ProcesoText ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
+  display: grid;
+  gap: 10px;
 }
+
 .itemProceso {
-  padding: 2rem;
-  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 14px;
+  padding: 12px;
+  color: #213053;
+  display: grid;
+  gap: 8px;
+  line-height: 1.45;
 }
 
-/*********** Proceso movil **********/
-@media (max-width: 768px) {
-  .contenedorProceso {
-    width: 98%;
-    padding: 0;
-    justify-content: center;
-    height: max-content;
-    margin-top: 2rem;
-  }
-
-  .proceso {
-    display: flex;
-    height: max-content;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .procesoImagen {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .ProcesoText {
-    width: 100%;
-    margin: 0;
-  }
-
-  .itemProceso {
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .contenedorProceso button {
-    width: 80%;
-    padding: 1rem;
-    font-size: 1.2rem;
-  }
+.itemProceso svg {
+  color: #2f4a7a;
 }
 
-/*********** Proceso   tablet **********/
-@media (min-width: 768px) and (max-width: 1024px) {
-  .contenedorProceso {
-    width: 98%;
-    padding: 0;
-    justify-content: center;
-    height: max-content;
-    margin-top: 2rem;
-  }
-
-  .proceso {
-    display: flex;
-    height: max-content;
-    width: 80%;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .procesoImagen {
-    width: 50%;
-    display: flex;
-
-    justify-content: start;
-  }
-
-  .ProcesoText {
-    width: 50%;
-    margin: 0;
-  }
-
-  .itemProceso {
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-  }
+.buttonShadows {
+  margin: 20px auto 0;
+  display: block;
+  min-width: 210px;
 }
 
-/************** Opiniones **************/
 .opiniones {
-  margin-top: 4rem;
-
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
+
 .opinionItem {
+  width: min(900px, 100%);
+  min-height: 180px;
+  padding: 20px;
+  border-radius: 18px;
   display: flex;
-  flex-direction: column;
-  height: 30vh;
-  background: linear-gradient(10deg, #276ced, #abc4f4);
-  width: 80%;
-  justify-content: center;
   align-items: center;
-  border-radius: 2rem;
-  margin-bottom: 2rem;
-  color: white;
-  box-shadow: 0 2px 10px black;
-}
-.textoOpinion {
-  width: 80%;
-  font-size: 1.3rem;
-}
-.textoOpinion span {
-  background-color: #9fbaf0a4;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 2rem;
-  margin: 2rem;
+  justify-content: center;
+  background: linear-gradient(160deg, #2c66cf, #81a9ec);
+  color: #f7fbff;
+  box-shadow: 0 16px 34px rgba(34, 63, 114, 0.28);
 }
 
-/************* Opiniones movil ***********/
-@media (max-width: 480px) {
-  .opiniones {
-    margin-top: 1rem;
+.textoOpinion {
+  width: min(720px, 96%);
+}
+
+.textoOpinion p {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.textoOpinion span {
+  display: inline-block;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 6px 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .carruselServicios {
+    min-height: 56vh;
   }
-  .opinionItem {
-    display: flex;
-    flex-direction: column;
-    height: max-content;
-    object-fit: contain;
-    width: 85%;
-    padding: 1rem;
+
+  .proceso {
+    grid-template-columns: 1fr;
   }
-  .textoOpinion {
-    font-size: 1rem;
-  }
-  .textoOpinion span {
-    padding: 0.5rem;
-    margin: 0rem;
+
+  .PresentacionItem {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    max-width: none;
   }
 }

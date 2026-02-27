@@ -6,12 +6,14 @@ interface Props {
   turno: InterfaceMisTurnos;
   handleCancelarTurno: (idTurno: string) => void;
   handleEliminarTurno: (idTurno: string) => void;
+  handleAbrirChat?: (idTurno: string) => void;
 }
 
 export function CardComponente({
   turno,
   handleCancelarTurno,
   handleEliminarTurno,
+  handleAbrirChat,
 }: Props) {
   const { loading } = useAppSelector((state) => state.turnos);
 
@@ -76,6 +78,16 @@ export function CardComponente({
       {/* COMPLETADO */}
       {turno.estado === "COMPLETADO" && (
         <p className="estado completado">Turno completado</p>
+      )}
+
+      {turno.estado !== "CANCELADO" && handleAbrirChat && (
+        <button
+          className="CardTurnoChatBtn"
+          type="button"
+          onClick={() => handleAbrirChat(turno.idTurno)}
+        >
+          Abrir chat
+        </button>
       )}
     </div>
   );

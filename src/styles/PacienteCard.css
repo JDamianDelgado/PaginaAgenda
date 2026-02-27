@@ -1,43 +1,77 @@
 .PacienteCard {
   display: flex;
-  gap: 18px;
+  gap: 16px;
   background: #eef2fb;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 10px 26px rgba(47, 74, 122, 0.2);
+  border: 1px solid #d6e1f7;
   border-left: 6px solid #3f5f99;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(47, 74, 122, 0.18);
 }
 
-/* AVATAR */
 .PacienteAvatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 16px;
+  width: 96px;
+  height: 96px;
+  border-radius: 14px;
   object-fit: cover;
   border: 3px solid #3f5f99;
+  flex-shrink: 0;
 }
 
-/* INFO */
-.PacienteInfo h3 {
+.PacienteInfo {
+  flex: 1;
+}
+
+.PacienteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.PacienteHeader h3 {
   margin: 0;
   color: #1f2a44;
+  font-size: 1.1rem;
 }
 
-.PacienteInfo p {
-  margin: 6px 0;
+.PacienteEmail {
+  margin: 6px 0 8px;
   color: #374151;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
-/* PAGO */
+.PacienteEstado {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+.PacienteEstado.estado-reservado {
+  background: #2a9d4b;
+}
+
+.PacienteEstado.estado-cancelado {
+  background: #d14a4a;
+}
+
+.PacienteEstado.estado-completado {
+  background: #5a67d8;
+}
+
 .PacientePago {
-  display: inline-block;
-  margin-top: 6px;
-  margin-bottom: 8px;
+  display: inline-flex;
+  margin-bottom: 10px;
   padding: 4px 12px;
   border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .PacientePago.ok {
@@ -50,12 +84,43 @@
   color: #991b1b;
 }
 
-/* NOTAS */
+.PacienteMetaGrid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.PacienteMetaItem {
+  background: #ffffff;
+  border: 1px solid #dce6fa;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.PacienteMetaItem span {
+  display: block;
+  font-size: 0.72rem;
+  color: #5f6c88;
+  margin-bottom: 3px;
+}
+
+.PacienteMetaItem p {
+  margin: 0;
+  color: #25324f;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
 .PacienteNotas {
   margin-top: 12px;
   background: #ffffff;
   border-radius: 12px;
+  border: 1px solid #dce6fa;
   padding: 12px;
+}
+
+.PacienteNotas strong {
+  color: #2a3d61;
 }
 
 .PacienteNota {
@@ -63,11 +128,22 @@
 }
 
 .PacienteNota span {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: #6b7280;
 }
 
 .PacienteNota p {
   margin: 2px 0 0;
-  font-size: 0.85rem;
+  color: #3b455b;
+}
+
+@media (max-width: 680px) {
+  .PacienteCard {
+    flex-direction: column;
+  }
+
+  .PacienteAvatar {
+    width: 82px;
+    height: 82px;
+  }
 }

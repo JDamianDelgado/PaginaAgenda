@@ -1,0 +1,194 @@
+.ChatPanel {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #eff4ff 0%, #dfe9ff 100%);
+  box-shadow: 0 14px 35px rgba(27, 54, 99, 0.15);
+}
+
+.ChatPanel h2 {
+  margin: 0 0 16px;
+  color: #1f2d4d;
+}
+
+.ChatPanelCreate {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ChatPanelCreate select {
+  flex: 1;
+  border: 1px solid #8ca3d3;
+  border-radius: 10px;
+  padding: 10px;
+  background: #ffffff;
+}
+
+.ChatPanelCreate button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ffffff;
+  background: #31589a;
+  cursor: pointer;
+}
+
+.ChatPanelCreate button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.ChatPanelSubtitle {
+  margin: 8px 0 0;
+  color: #5d6b87;
+  font-size: 0.9rem;
+}
+
+.ChatPanelGrid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 16px;
+}
+
+.ChatPanelInbox {
+  background: #ffffff;
+  border: 1px solid #d2ddf6;
+  border-radius: 12px;
+  padding: 12px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.ChatPanelInbox h3,
+.ChatPanelMessages h3 {
+  margin-top: 0;
+  color: #30405f;
+}
+
+.ChatPanelInboxItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  border: 1px solid #d7e3ff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f8fbff;
+  cursor: pointer;
+  color: #2b3a59;
+}
+
+.ChatPanelInboxItem.active {
+  border-color: #466fbb;
+  background: #ebf3ff;
+}
+
+.ChatPanelInboxItem small {
+  color: #64748b;
+}
+
+.ChatBadge {
+  margin-top: 4px;
+  background: #e84f5f;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+.ChatPanelMessages {
+  background: #ffffff;
+  border: 1px solid #d2ddf6;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ChatMessagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 220px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.ChatMessage {
+  width: fit-content;
+  max-width: 80%;
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+
+.ChatMessage p {
+  margin: 0;
+}
+
+.ChatMessage small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.ChatMessage.mine {
+  align-self: flex-end;
+  background: #cfdefe;
+}
+
+.ChatMessage.other {
+  align-self: flex-start;
+  background: #f0f2f7;
+}
+
+.ChatInputRow {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.ChatInputRow textarea {
+  flex: 1;
+  min-height: 68px;
+  resize: vertical;
+  border: 1px solid #b7c8ec;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.ChatInputRow button {
+  align-self: flex-end;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ffffff;
+  background: #31589a;
+  cursor: pointer;
+}
+
+.ChatInputRow button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.ChatPanelError {
+  margin-top: 10px;
+  color: #bb1f3a;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .ChatPanelGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ChatMessagesList {
+    max-height: 240px;
+  }
+}

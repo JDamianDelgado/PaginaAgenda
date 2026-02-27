@@ -1,329 +1,171 @@
-/* HOME */
-
-/* generales */
-
-.buttonShadow:hover {
-  box-shadow: 0 5px 10px black;
-}
 .layout {
-  padding-top: 0.5rem;
-  height: 100%;
+  padding: 10px 14px 18px;
+  min-height: calc(100vh - 150px);
 }
 
-/* AGENDA TURNOS  */
-
-/* ===== CONTENEDOR GENERAL ===== */
-/* ===== CONTENEDOR GENERAL ===== */
-/* .AgendaTurnos {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 28px;
-  background-color: #f4f7fc;
-  border-radius: 16px;
-  font-family: system-ui, sans-serif;
-} */
-
-/* ===== TITULOS ===== */
-/* .AgendaTurnos h1 {
-  color: #5e80be;
-  margin-bottom: 20px;
+.buttonShadow:hover,
+.buttonShadows:hover {
+  box-shadow: 0 10px 22px rgba(24, 43, 77, 0.25);
 }
 
-.AgendaTurnos h2 {
-  color: #1f2937;
-  margin: 24px 0 12px;
-} */
-
-/* ===== LISTA TURNOS ===== */
-.TurnosLista {
-  margin-top: 20px;
-}
-
-/* ===== CARD TURNO ===== */
-.TurnoCard {
-  background: #ffffff;
-  border: 1px solid #dbe3f0;
-  padding: 16px 20px;
-  border-radius: 14px;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.TurnoInfo p {
-  margin: 4px 0;
-  color: #4b5563;
-}
-
-/* ===== ESTADOS ===== */
-.estado {
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.estado.RESERVADO {
-  color: #4caf50;
-}
-
-.estado.CANCELADO {
-  color: #e57373;
-}
-
-.estado.COMPLETADO {
-  color: #8a8a8a;
-}
-
-/* ===== BOTÓN CANCELAR ===== */
-.TurnoCard button {
-  background: transparent;
-  border: 1px solid #e57373;
-  color: #e57373;
-  padding: 6px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.TurnoCard button:hover {
-  background: #e57373;
-  color: white;
-}
-
-/* ===== MODAL ===== */
-.ModalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(94, 128, 190, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Modal {
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 18px;
-  width: 420px;
-  box-shadow: 0 10px 30px rgba(94, 128, 190, 0.25);
-}
-
-.Modal h3 {
-  color: #5e80be;
-}
-
-.Modal textarea {
-  width: 100%;
-  height: 100px;
-  background: #f4f7fc;
-  border: 1px solid #dbe3f0;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 10px;
-  resize: none;
-}
-
-/* ===== ACCIONES MODAL ===== */
-.ModalActions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.ModalActions .confirm {
-  background: #e57373;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-.ModalActions .close {
-  background: transparent;
-  border: 1px solid #5e80be;
-  color: #5e80be;
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-/* spinner Cargando*/
 .spinner-container {
+  min-height: 70vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%;
+  justify-content: center;
 }
 
 .spinner {
-  width: 510px;
-  height: 50px;
-  border: 6px solid #ddd;
-  border-top: 6px solid #3498db;
+  width: 56px;
+  height: 56px;
+  border: 5px solid rgba(94, 128, 190, 0.25);
+  border-top-color: #5e80be;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.85s linear infinite;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
-/*////////////////////////////////////*/
-/* LOGIN */
-/*////////////////////////////*/
+
 .contenedorForm {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: radial-gradient(circle, #d9e6ff, #abc4f4);
+  min-height: 78vh;
+  display: grid;
+  place-items: center;
+  animation: fadeUp 0.45s ease;
 }
-.contenedorLogin {
+
+.contenedorLogin,
+.contenedorRegistro {
+  width: min(430px, 92%);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  background-color: #abc4f4;
-  border-radius: 2rem;
-  box-shadow: 0 2px 10px black;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
+  padding: 26px;
+  border-radius: 20px;
+  background: rgba(238, 243, 255, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid #c9d9f7;
+  box-shadow: var(--shadow-soft);
+}
+
+.contenedorLogin label,
+.contenedorRegistro label {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.contenedorLogin input,
+.contenedorRegistro input,
+.contenedorRegistro select {
+  border: 1px solid #c4d5f5;
+  background: #fff;
+  border-radius: 10px;
+  padding: 11px 12px;
+  color: #223255;
+}
+
+.contenedorLogin input:focus,
+.contenedorRegistro input:focus,
+.contenedorRegistro select:focus {
+  outline: none;
+  border-color: #5e80be;
+  box-shadow: 0 0 0 3px rgba(94, 128, 190, 0.2);
 }
 
 .verPassword {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 2rem;
-}
-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-.verPassword span {
-  margin-right: 1rem;
+  gap: 8px;
 }
 
-.contenedorLogin input {
-  border-radius: 2rem;
+.verPassword input {
+  flex: 1;
+}
+
+.togglePassword {
+  cursor: pointer;
+  color: #4f6ea8;
+}
+
+.contenedorLogin button,
+.contenedorRegistro button,
+.buttonShadows {
   border: none;
-  padding: 0.8rem;
+  border-radius: 10px;
+  background: #4f73b6;
+  color: #fff;
+  font-weight: 700;
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.contenedorLogin button {
-  all: unset;
-  padding: 1rem;
-  background-color: #d9e6ff;
-  border-radius: 2rem;
+
+.contenedorLogin button:hover,
+.contenedorRegistro button:hover,
+.buttonShadows:hover {
+  background: #3f62a3;
+  transform: translateY(-1px);
 }
-.contenedorLogin button:hover {
-  box-shadow: 0 2px 10px black;
+
+.contenedorLogin span,
+.contenedorRegistro span,
+.contenedorRegistro small {
+  color: #4e5f80;
+  font-size: 0.86rem;
 }
-.contenedorLogin button:active {
-  box-shadow: 0 8px 10px black;
-  transform: scale(0.9);
+
+.contenedorLogin span,
+.contenedorRegistro span {
+  cursor: pointer;
 }
-.contenedorRegistro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 0.4rem;
-  background-color: #abc4f4;
-  border-radius: 2rem;
-  padding: 2rem;
-  box-shadow: 0 2px 10px black;
-  text-align: center;
-}
-.contenedorRegistro input {
-  border-radius: 2rem;
-  border: none;
-  padding: 0.5rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-.contenedorRegistro button {
-  all: unset;
-  padding: 1rem;
-  background-color: #d9e6ff;
-  border-radius: 2rem;
-}
-.contenedorRegistro button:hover {
-  box-shadow: 0 2px 10px black;
-}
-.contenedorRegistro button:active {
-  box-shadow: 0 8px 10px black;
-  transform: scale(0.9);
-}
+
 .botonesRegistro {
   display: flex;
-  gap: 1rem;
+  gap: 8px;
 }
 
-/* //cardProfesional// */
-/* styles/cardTurnoProfesional.css */
-
-.card-turno {
-  background: #ffffff;
-  border-radius: 10px;
+.cardUsuario {
+  margin-top: 16px;
+  border-radius: 14px;
   padding: 16px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  border-left: 6px solid #999;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(169, 193, 255, 0.2);
+  animation: fadeUp 0.3s ease;
 }
 
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.cardUsuario h2 {
+  margin-top: 0;
+  color: #e8f0ff;
 }
 
-.card-header h3 {
-  margin: 0;
-  font-size: 1.1rem;
+.cardUsuario p {
+  margin: 8px 0;
+  color: #e1e8fb;
 }
 
-.card-body {
-  margin-top: 10px;
-  font-size: 0.95rem;
+.cardUsuario form {
+  display: grid;
+  gap: 8px;
 }
 
-.estado {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: white;
+.cardUsuario input,
+.cardUsuario select {
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(209, 225, 255, 0.5);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-/* Estados */
-.estado-reservado {
-  border-left-color: #07c400;
-}
-
-.estado.reservado {
-  background: #07c400;
-}
-
-.estado-cancelado {
-  border-left-color: #d32f2f;
-}
-
-.estado.cancelado {
-  background: #d32f2f;
-}
-
-.estado-completado {
-  border-left-color: #4025bd;
-}
-
-.estado.completado {
-  background: #4025bd;
+.cardUsuario button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 600;
+  color: #fff;
+  background: #4f73b6;
+  cursor: pointer;
 }

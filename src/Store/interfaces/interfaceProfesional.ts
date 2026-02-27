@@ -68,6 +68,7 @@ export interface MiPerfilProfesionalResponse {
       estado: "RESERVADO" | "CANCELADO" | "COMPLETADO";
       creado: string;
     }[];
+    Horario?: interfaceMisHorariosProfesional[];
   };
 }
 

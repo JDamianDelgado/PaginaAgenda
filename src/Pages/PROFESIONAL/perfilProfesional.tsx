@@ -4,13 +4,11 @@ import { miPerfilProfesional } from "../../Store/Profesionales/profesional.Thunk
 import { FormPerfilProfesional } from "../../components/formularios/perfilProfesional.create";
 import { UpdateFormPerfilProfesional } from "../../components/formularios/updatePerfilProfesional";
 import "../../styles/panelProfesional.css";
-import { mensajesProfesionalMock } from "../../Mock/mensajeProfesional.mock";
-import { pacientesProfesionalMock } from "../../Mock/misPacientes.mock";
-import { MessageCard } from "../../components/messageComponent";
-import { PacienteCard } from "../../components/pacientesCard";
 import { misHorariosProfesional } from "../../Store/HorariosProfesional/HorarioProfesional.Thunks";
 import { Link } from "react-router-dom";
 import { MisHorariosProfesional } from "./misHorariosProfesional";
+import { ChatTurnoPanel } from "../../components/chat/ChatTurnoPanel";
+
 export function PerfilProfesional() {
   const dispatch = useAppDispatch();
   const { usuario, loading, error } = useAppSelector(
@@ -22,7 +20,15 @@ export function PerfilProfesional() {
   const [viewForm, setViewForm] = useState(false);
   const [viewFormUpdate, setViewFormUpdate] = useState(false);
 
-  const tienePerfil = !!usuario?.profesional;
+  const tienePerfil = Boolean(usuario?.profesional?.idProfesional);
+  const turnosChat =
+    usuario?.profesional?.TurnosProfesional.filter(
+      (turno) => turno.estado !== "CANCELADO",
+    ).map((turno) => ({
+      idTurno: turno.idTurno,
+      label: `${turno.user.nombre} ${turno.user.apellido}`,
+      subtitle: `${turno.fecha} - ${turno.hora}`,
+    })) ?? [];
 
   useEffect(() => {
     if (token) {
@@ -39,19 +45,21 @@ export function PerfilProfesional() {
       {error && <p className="PerfilProfesionalError">Error: {error}</p>}
 
       {!tienePerfil ? (
-        <>
-          <p>No tenés perfil profesional aún</p>
-          <button onClick={() => setViewForm(true)}>
-            Crear Perfil Profesional
-          </button>
-        </>
+        <section className="PerfilProfesionalEmpty">
+          <h2>Aun no creaste tu perfil profesional</h2>
+          <p>
+            Completa tu perfil para aparecer en la agenda de pacientes y recibir
+            reservas.
+          </p>
+          <button onClick={() => setViewForm(true)}>Crear perfil profesional</button>
+        </section>
       ) : (
         <div className="PerfilProfesionalCard">
           <img
             className="PerfilProfesionalImg"
             src={
               usuario.profesional?.imagenUrl ||
-              "https://media.istockphoto.com/id/1396814518/es/vector/imagen-pr%C3%B3ximamente-sin-foto.jpg"
+              "https://clipart-library.com/data_images/100672.png"
             }
             alt={usuario.email}
           />
@@ -77,37 +85,31 @@ export function PerfilProfesional() {
           </div>
         </div>
       )}
+
       {viewForm && <FormPerfilProfesional setViewForm={setViewForm} />}
       {viewFormUpdate && (
         <UpdateFormPerfilProfesional setViewForm={setViewFormUpdate} />
       )}
 
-      <div>
-        <button
-          className="PerfilProfesionalActions"
-          onClick={() => setViewHours(!viewHours)}
-        >
-          {viewHours ? "Ocultar" : "Ver Mis Horarios"}
-        </button>
-        {viewHours && (
-          <MisHorariosProfesional
-            misHorarios={misHorarios}
-          ></MisHorariosProfesional>
-        )}
-      </div>
-      <div>
-        <h1>Mensajes</h1>
-        {mensajesProfesionalMock.map((msg) => (
-          <MessageCard key={msg.id} mensaje={msg} />
-        ))}
-      </div>
+      {tienePerfil && (
+        <div>
+          <button
+            className="PerfilProfesionalActions"
+            onClick={() => setViewHours(!viewHours)}
+          >
+            {viewHours ? "Ocultar" : "Ver Mis Horarios"}
+          </button>
+          {viewHours && (
+            <MisHorariosProfesional misHorarios={misHorarios}></MisHorariosProfesional>
+          )}
+        </div>
+      )}
 
-      <div>
-        <h1>Mis Pacientes:</h1>
-        {pacientesProfesionalMock.map((pac) => (
-          <PacienteCard key={pac.id} paciente={pac} />
-        ))}
-      </div>
+      <ChatTurnoPanel
+        title="Mensajes con pacientes"
+        turnos={turnosChat}
+        emptyLabel="No hay conversaciones todavia."
+      />
     </div>
   );
 }

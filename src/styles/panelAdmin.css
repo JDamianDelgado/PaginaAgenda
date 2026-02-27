@@ -1,124 +1,164 @@
-/* ===== CONTENEDOR GENERAL ===== */
 .PanelAdmin {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 30px;
-  background: linear-gradient(135deg, #1f2a44, #2f4a7a);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  color: #ffffff;
+  max-width: 1120px;
+  margin: 32px auto;
+  padding: 24px 18px;
+  border-radius: 22px;
+  background: linear-gradient(155deg, #1f2a44, #2f4a7a);
+  color: #f4f8ff;
+  box-shadow: 0 20px 40px rgba(13, 23, 43, 0.4);
+  animation: fadeUp 0.4s ease;
 }
 
-/* ===== TITULO ===== */
 .PanelAdmin h1 {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  color: #e6ecf8;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: 10px;
+  margin: 0 0 20px;
+  font-size: 2rem;
 }
 
-/* ===== SECCIONES ===== */
 .PanelAdmin section {
-  margin-bottom: 35px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 16px;
 }
 
-/* ===== SUBTITULOS ===== */
 .PanelAdmin section h2 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  color: #a9c1ff;
+  margin-top: 0;
+  color: #c8dbff;
 }
 
-/* ===== LISTAS ===== */
 .AdminList {
   list-style: none;
-  padding: 0;
   margin: 0;
-}
-
-/* ===== ITEM USUARIO ===== */
-.AdminUserItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  margin-bottom: 10px;
-  transition: background 0.2s ease;
-}
-
-.AdminUserItem:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* ===== INFO USUARIO ===== */
-.AdminUserInfo {
-  font-size: 0.95rem;
-  color: #f1f5ff;
-}
-
-/* ===== BOTONES ===== */
-.AdminActions {
-  display: flex;
+  padding: 0;
+  display: grid;
   gap: 10px;
 }
 
-.AdminBtnEdit {
-  background: #5e80be;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s ease;
+.AdminUserItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.AdminBtnEdit:hover {
-  background: #4b6fb0;
+.AdminUserInfo {
+  color: #e7efff;
+}
+
+.AdminActions {
+  display: flex;
+  gap: 8px;
+}
+
+.AdminBtnEdit,
+.AdminBtnDelete,
+.AdminCloseBtn {
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.AdminBtnEdit {
+  background: #4e73b7;
 }
 
 .AdminBtnDelete {
-  background: #d9534f;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s ease;
+  background: #d14a4a;
 }
 
-.AdminBtnDelete:hover {
-  background: #c9302c;
+.AdminCloseBtn {
+  margin-top: 8px;
+  background: #6b84b6;
 }
 
-/* ===== ESTADOS ===== */
 .PanelAdminLoading {
-  color: #a9c1ff;
+  color: #c6d9ff;
 }
 
 .PanelAdminError {
-  color: #ff8a8a;
-  font-weight: 500;
+  color: #ffd1d1;
+  font-weight: 700;
 }
 
-/* ===== BOTON CERRAR MODAL ===== */
-.AdminCloseBtn {
-  margin-top: 20px;
-  background: transparent;
-  border: 1px solid #a9c1ff;
-  color: #a9c1ff;
-  padding: 10px 16px;
-  border-radius: 10px;
+@media (max-width: 760px) {
+  .AdminUserItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.AdminModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(7, 13, 26, 0.58);
+  display: grid;
+  place-items: center;
+  padding: 14px;
+}
+
+.AdminModalCard {
+  width: min(520px, 96%);
+  border-radius: 16px;
+  padding: 16px;
+  background: linear-gradient(165deg, #ecf3ff, #d8e6ff);
+  border: 1px solid #bfd2f5;
+  box-shadow: 0 20px 38px rgba(14, 26, 52, 0.38);
+  color: #1f2f4f;
+  animation: fadeUp 0.2s ease;
+}
+
+.AdminModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.AdminModalHeader h2 {
+  margin: 0;
+  color: #21375f;
+}
+
+.AdminModalClose {
+  border: none;
+  border-radius: 8px;
+  background: #587dbf;
+  color: white;
+  width: 34px;
+  height: 34px;
   cursor: pointer;
 }
 
-.AdminCloseBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
+.AdminModalBody p {
+  margin: 8px 0;
+  color: #32496f;
+}
+
+.AdminModalForm {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.AdminModalForm input,
+.AdminModalForm select {
+  border: 1px solid #b8cdf2;
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: #fff;
+}
+
+.AdminModalActions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }

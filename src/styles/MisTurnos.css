@@ -1,72 +1,137 @@
-/* ===== CONTENEDOR ===== */
 .MisTurnos {
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 980px;
+  margin: 36px auto;
   padding: 0 20px;
-  justify-content: center;
-  text-align: center;
 }
 
-/* ===== TÍTULO ===== */
-.MisTurnos h1 {
-  color: #5e80be;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
+.MisTurnosHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
-/* ===== MENSAJES ===== */
+.MisTurnosHeader h1 {
+  margin: 0;
+  color: #2f4a7a;
+  font-size: 2rem;
+}
+
+.MisTurnosHeader p {
+  margin: 0;
+  color: #526891;
+  font-weight: 600;
+}
+
 .MisTurnos p {
   color: #4b5563;
-  font-size: 0.95rem;
 }
 
 .MisTurnos .error {
-  color: #e57373;
-  font-weight: 500;
+  color: #d14a4a;
+  font-weight: 600;
 }
 
 .MisTurnos .empty {
-  background: #f5f7fb;
+  background: #f4f7ff;
+  border: 1px dashed #a9bcde;
   border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  color: #6b7280;
-  margin-top: 20px;
+  padding: 16px;
+  color: #55627d;
 }
 
-/* ===== LISTA TURNOS ===== */
-.MisTurnosLista {
-  flex-direction: column;
-  text-align: center;
-  display: flex;
-  gap: 14px;
-  margin-top: 20px;
+.MisTurnosPaneles {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
 }
-.estadoTurno {
+
+.MisTurnosPanel {
+  background: #eef3ff;
+  border: 1px solid #d8e3fa;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.MisTurnosPanelBtn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #243a63;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.MisTurnosPanelBtn strong {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #d7e4ff;
+  color: #21457d;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
-/* ===== BOTÓN NUEVO TURNO ===== */
+.MisTurnosPanelBtn.active {
+  background: #dce9ff;
+}
+
+.MisTurnosPanelBody {
+  padding: 0 14px 14px;
+}
+
+.MisTurnosPanelDesc {
+  margin: 0 0 12px;
+  color: #5b6d8f;
+  font-size: 0.92rem;
+}
+
+.MisTurnosVacio {
+  background: #ffffff;
+  border: 1px solid #dde7fa;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.estadoTurno {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.MisTurnosCardWrap .CardTurno {
+  margin-bottom: 0;
+  height: 100%;
+  border-radius: 16px;
+  border: 1px solid #d5e1f8;
+  box-shadow: 0 8px 20px rgba(47, 74, 122, 0.12);
+}
+
 .BtnNuevoTurno {
-  margin-top: 30px;
+  margin-top: 22px;
   background: #5e80be;
   color: white;
   border: none;
-  padding: 12px 22px;
+  padding: 11px 20px;
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: 0.98rem;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
 }
 
 .BtnNuevoTurno:hover {
-  background: #4a6fb0;
-  transform: translateY(-2px);
+  background: #4f72b3;
+}
+
+@media (max-width: 700px) {
+  .MisTurnosHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

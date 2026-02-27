@@ -9,6 +9,33 @@ import type {
 } from "../interfaces/interfaceTurnos";
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+const normalizeSlots = (payload: unknown): string[] => {
+  const isStringArray = (value: unknown): value is string[] =>
+    Array.isArray(value) && value.every((item) => typeof item === "string");
+
+  if (isStringArray(payload)) {
+    return payload;
+  }
+
+  if (payload && typeof payload === "object") {
+    const source = payload as Record<string, unknown>;
+    const candidates = [
+      source.turnosDisponibles,
+      source.horariosDisponibles,
+      source.slots,
+      source.data,
+    ];
+
+    for (const candidate of candidates) {
+      if (isStringArray(candidate)) {
+        return candidate;
+      }
+    }
+  }
+
+  return [];
+};
 //fecha formato aaaa/mm/dd
 export const TurnosProfesionalDisponible = createAsyncThunk<
   TurnosDisponiblesResponse,
@@ -34,7 +61,8 @@ export const TurnosProfesionalDisponible = createAsyncThunk<
       });
     }
     const data = await response.json();
-    return data;
+    const normalized = normalizeSlots(data);
+    return normalized.sort((a, b) => a.localeCompare(b));
   } catch {
     return rejectWithValue({ message: "Error de conexion" });
   }

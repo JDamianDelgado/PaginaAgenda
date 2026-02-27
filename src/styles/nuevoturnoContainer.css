@@ -1,375 +1,192 @@
-/****************CALENDARIO ***************/
-/* ===============================
-   MODAL OVERLAY
-================================= */
+.nuevo-turno-container {
+  width: min(1140px, 98%);
+  margin: 0 auto;
+  padding: 14px 6px 24px;
+  animation: fadeUp 0.45s ease;
+}
+
+.nuevo-turno-title {
+  margin: 0 0 18px;
+  text-align: center;
+  color: #23406b;
+}
+
+.loading-text,
+.error-text,
+.no-profesionales {
+  text-align: center;
+}
+
+.error-text {
+  color: var(--color-danger);
+}
+
+.profesionales-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 14px;
+}
+
+.profesional-card {
+  background: linear-gradient(165deg, #edf3ff, #d8e6ff);
+  border: 1px solid #c6d8f8;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profesional-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.profesional-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6a8eca;
+}
+
+.profesional-name {
+  margin: 10px 0 4px;
+  color: #21385f;
+}
+
+.profesional-especialidad {
+  margin: 0 0 8px;
+  color: #4f6999;
+}
+
+.profesional-descripcion {
+  margin: 0 0 12px;
+  color: #3f557c;
+  line-height: 1.5;
+}
+
+.profesional-btn {
+  border: none;
+  border-radius: 10px;
+  background: #4d73b8;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.profesional-btn:hover {
+  background: #3f62a2;
+}
 
 .calendarModal {
   position: fixed;
   inset: 0;
-
-  background: rgba(15, 23, 42, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
   z-index: 1000;
-  text-align: center;
+  background: rgba(9, 18, 36, 0.58);
+  display: grid;
+  place-items: center;
+  padding: 18px;
 }
 
-/* ===============================
-   CARD CONTENEDORA
-================================= */
-
 .calendarCard {
-  background: #ffffff;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  max-width: 600px;
-  border-radius: 16px;
-  padding: 35px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.3s ease-in-out;
-  background-color: #dcdcdd;
+  width: min(660px, 98%);
+  border-radius: 20px;
+  background: linear-gradient(165deg, #edf3ff, #d6e5ff);
+  border: 1px solid #c9daf8;
+  box-shadow: 0 24px 44px rgba(18, 34, 62, 0.34);
+  padding: 22px;
+  animation: fadeUp 0.3s ease;
 }
 
 .calendarTitle {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 25px;
+  margin: 0 0 14px;
   text-align: center;
-  color: #1e293b;
+  color: #223a62;
 }
-
-/* ===============================
-   CALENDAR
-================================= */
 
 .calendarComponent {
   width: 100%;
-  margin: auto;
-  border-radius: 8px;
+  border-radius: 14px;
   border: none;
+  padding: 6px;
+  box-shadow: 0 8px 18px rgba(37, 62, 108, 0.18);
 }
 
 .react-calendar__tile--active {
-  background: #1e40af !important;
-  color: white !important;
+  background: #3f62a2 !important;
+  color: #fff !important;
   border-radius: 8px;
 }
 
 .react-calendar__tile:hover {
-  background: #dbeafe;
+  background: #dce8ff !important;
   border-radius: 8px;
 }
 
-/* ===============================
-   MENSAJES
-================================= */
-
 .calendarMessage {
-  margin-top: 15px;
-  color: #475569;
+  margin-top: 10px;
+  color: #506287;
   text-align: center;
 }
 
 .calendarError {
-  margin-top: 15px;
-  color: #dc2626;
-  font-weight: 500;
+  margin-top: 10px;
   text-align: center;
+  color: #bf3131;
+  font-weight: 700;
 }
-
-.calendarWarning {
-  margin-top: 15px;
-  color: #d97706;
-  font-weight: 500;
-  text-align: center;
-}
-
-/* ===============================
-   HORARIOS
-================================= */
 
 .horariosTitle {
-  margin-top: 25px;
-  margin-bottom: 15px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #1e293b;
+  margin: 16px 0 10px;
   text-align: center;
+  color: #263f68;
 }
 
 .horariosContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
+  gap: 8px;
 }
 
 .horaBtn {
-  padding: 8px 16px;
+  border: 1px solid #6588c6;
+  background: #fff;
+  color: #355b98;
   border-radius: 8px;
-  border: 1px solid #1e40af;
-  background: white;
-  color: #1e40af;
+  padding: 8px 14px;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
 }
 
-.horaBtn:hover {
-  background: #1e40af;
-  color: white;
-}
-
+.horaBtn:hover,
 .horaBtn.activa {
-  background: #1e40af;
-  color: white;
+  background: #4469ab;
+  color: #fff;
 }
-
-/* ===============================
-   BOTON CONFIRMAR
-================================= */
 
 .crearTurnoBtn {
-  margin-top: 25px;
-  width: 50%;
-  margin: 1rem;
-  padding: 12px;
-  border-radius: 10px;
+  width: 100%;
   border: none;
-  background: #0f172a;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
+  border-radius: 10px;
+  background: #395b98;
+  color: #fff;
+  font-weight: 700;
+  padding: 11px;
+  margin-top: 10px;
   cursor: pointer;
-  transition: 0.2s ease;
 }
 
 .crearTurnoBtn:hover {
-  background: #1e293b;
+  background: #2f4a7a;
 }
 
-/* ===============================
-   RESPONSIVE
-================================= */
-
-/* PC grande */
-@media (min-width: 1024px) {
-  .calendarCard {
-    max-width: 650px;
-    padding: 40px;
-  }
+.crearTurnoBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
-
-/* Tablet */
-@media (max-width: 768px) {
-  .calendarCard {
-    padding: 25px;
-  }
-
-  .calendarTitle {
-    font-size: 20px;
-  }
-
-  .horaBtn {
-    padding: 7px 14px;
-    font-size: 14px;
-  }
-}
-
-/* Móvil */
-@media (max-width: 480px) {
-  .calendarCard {
-    padding: 20px;
-    border-radius: 12px;
-  }
-
-  .calendarTitle {
-    font-size: 18px;
-  }
-
-  .horariosContainer {
-    gap: 8px;
-  }
-
-  .horaBtn {
-    flex: 1 1 40%;
-    text-align: center;
-  }
-
-  .crearTurnoBtn {
-    font-size: 14px;
-    padding: 10px;
-  }
-}
-
-/* ===============================
-   ANIMACION
-================================= */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/*******************Nuevo turno ***********/
-/* Contenedor principal */
-.nuevo-turno-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-}
-
-.nuevo-turno-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #2c3e50;
-}
-
-/* Mensajes */
-.loading-text,
-.error-text,
-.no-profesionales {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-.error-text {
-  color: #e74c3c;
-}
-
-/* Lista de profesionales */
-.profesionales-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-/* Tarjeta profesional */
-.profesional-card {
-  display: flex;
-  width: 25%;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.profesional-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.profesional-avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
-.profesional-info {
-  flex: 1;
-}
-
-.profesional-name {
-  font-size: 1.3rem;
-  margin: 0;
-  color: #34495e;
-}
-
-.profesional-especialidad {
-  font-size: 1rem;
-  color: #7f8c8d;
-  margin: 0.3rem 0;
-}
-
-.profesional-descripcion {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-.profesional-btn {
-  background-color: #2980b9;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.profesional-btn:hover {
-  background-color: #3498db;
-}
-.profesionales-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Responsive */
-/* Móviles <480px */
-@media (max-width: 480px) {
-  .profesional-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: max-content;
-  }
-
-  .profesional-avatar {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .profesionales-list {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-}
-
-/* Tablets 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
-  .profesionales-list {
-  }
-  .profesional-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: max-content;
-  }
-}
-
-/* PC 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .profesionales-list {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* Monitores grandes >1024px */

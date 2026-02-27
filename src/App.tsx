@@ -6,10 +6,16 @@ import "./styles/Home.css";
 import "./styles/footer.css";
 import "./styles/planes.css";
 import "./styles/nuevoturnoContainer.css";
+import "./styles/misHorarios.css";
+import "./styles/chat.css";
+import "./styles/agendaProfesional.css";
+import "./styles/authRecovery.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Login } from "./Pages/Login";
 import { Planes } from "./Pages/Planes";
+import { ForgotPassword } from "./Pages/ForgotPassword";
+import { ResetPassword } from "./Pages/ResetPassword";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "./Store/hooks.Redux";
@@ -40,6 +46,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/planes" element={<Planes />} />
           {role === "PACIENTE" && (
             <>
