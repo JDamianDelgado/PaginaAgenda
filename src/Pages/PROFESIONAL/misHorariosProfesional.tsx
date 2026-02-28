@@ -1,12 +1,12 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import type { interfaceMisHorariosProfesional } from "../../Store/interfaces/interfaceHorarios";
 import {
   createHorario,
   editarHorario,
   eliminarHorario,
-  misHorariosProfesional,
 } from "../../Store/HorariosProfesional/HorarioProfesional.Thunks";
 import { useAppDispatch } from "../../Store/hooks.Redux";
+import { miPerfilProfesional } from "../../Store/Profesionales/profesional.Thunks";
 
 interface Props {
   misHorarios: interfaceMisHorariosProfesional[];
@@ -28,6 +28,7 @@ export function MisHorariosProfesional({ misHorarios }: Props) {
   const deleteHorario = async (id: string) => {
     try {
       await dispatch(eliminarHorario({ idHorario: id })).unwrap();
+      await dispatch(miPerfilProfesional());
       alert("Horario eliminado correctamente");
     } catch (error) {
       console.error(error);
@@ -79,7 +80,7 @@ export function MisHorariosProfesional({ misHorarios }: Props) {
 
         alert("Horario creado correctamente");
       }
-      await dispatch(misHorariosProfesional());
+      await dispatch(miPerfilProfesional());
       setEditingId(null);
       setEditedHorario(null);
       setCrearHorario(null);
@@ -119,7 +120,10 @@ export function MisHorariosProfesional({ misHorarios }: Props) {
 
               {horariosDelDia.length === 0 && (
                 <>
-                  <p className="sin-horario">No configurado aún</p>
+                  <p className="sin-horario">
+                    Estado: <span className="estado inactivo">Inactivo</span>
+                  </p>
+                  <p className="sin-horario">Sin franja horaria creada</p>
 
                   <button
                     className="btn crear-horario"
@@ -135,7 +139,7 @@ export function MisHorariosProfesional({ misHorarios }: Props) {
                           horaInicio: "",
                           horaFin: "",
                           duracionTurno: 30,
-                          activo: true,
+                          activo: false,
                         });
                       }
                     }}
@@ -170,7 +174,7 @@ export function MisHorariosProfesional({ misHorarios }: Props) {
                   />
 
                   <label className="checkbox-label">
-                    Activo
+                    {editedHorario.activo ? "Activo" : "Inactivo"}
                     <input
                       type="checkbox"
                       checked={editedHorario.activo}

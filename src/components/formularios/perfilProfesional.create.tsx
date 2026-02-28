@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useAppDispatch } from "../../Store/hooks.Redux";
 import {
   creatPerfilProfesional,
@@ -17,7 +17,7 @@ export function FormPerfilProfesional({ setViewForm }: Props) {
     imagenUrl: "",
     especialidad: "",
     descripcion: "",
-    activo: true,
+    activo: false,
   });
 
   function handleChange(
@@ -80,3 +80,4 @@ export function FormPerfilProfesional({ setViewForm }: Props) {
     </div>
   );
 }
+

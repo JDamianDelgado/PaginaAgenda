@@ -16,7 +16,10 @@ export function Navbar() {
 
   const unreadCount = useMemo(
     () =>
-      conversaciones.reduce((acum, conversation) => acum + (conversation.noLeidos || 0), 0),
+      conversaciones.reduce(
+        (acum, conversation) => acum + (conversation.noLeidos || 0),
+        0,
+      ),
     [conversaciones],
   );
 
@@ -43,7 +46,7 @@ export function Navbar() {
     <nav className="Navbar">
       <div className="NavbarLogo">
         <Link to="/" onClick={() => setOpen(false)}>
-          <img src="image.png" alt="Power of mind" />
+          <img src="logoEliz.png" alt="Power of mind" className="Logo" />
         </Link>
       </div>
 
@@ -77,7 +80,10 @@ export function Navbar() {
             >
               Mi cuenta
               {canUseChat && (
-                <span className="NavbarNotification" aria-label="Mensajes sin leer">
+                <span
+                  className="NavbarNotification"
+                  aria-label="Mensajes sin leer"
+                >
                   <FiBell />
                   {unreadCount > 0 && <strong>{unreadCount}</strong>}
                 </span>

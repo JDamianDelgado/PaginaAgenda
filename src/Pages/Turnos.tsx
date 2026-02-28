@@ -20,6 +20,12 @@ type EstadoVista = "reservados" | "cancelados" | "completados";
 
 export function MisTurnos() {
   const [openPanel, setOpenPanel] = useState<EstadoVista>("reservados");
+  const [cancelandoTurnoId, setCancelandoTurnoId] = useState<string | null>(
+    null,
+  );
+  const [eliminandoTurnoId, setEliminandoTurnoId] = useState<string | null>(
+    null,
+  );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { loading, error, misTurnos } = useAppSelector((state) => state.turnos);
@@ -29,15 +35,25 @@ export function MisTurnos() {
   }, [dispatch]);
 
   const handleCancelarTurno = async (idTurno: string) => {
-    await dispatch(cancelarTurno({ idTurno }));
-    alert("Turno cancelado");
-    dispatch(misTurnosPaciente());
+    try {
+      setCancelandoTurnoId(idTurno);
+      await dispatch(cancelarTurno({ idTurno })).unwrap();
+      alert("Turno cancelado");
+      dispatch(misTurnosPaciente());
+    } finally {
+      setCancelandoTurnoId(null);
+    }
   };
 
   const handleEliminarTurno = async (idTurno: string) => {
-    await dispatch(eliminarTurno({ idTurno }));
-    alert("Turno eliminado correctamente");
-    dispatch(misTurnosPaciente());
+    try {
+      setEliminandoTurnoId(idTurno);
+      await dispatch(eliminarTurno({ idTurno })).unwrap();
+      alert("Turno eliminado correctamente");
+      dispatch(misTurnosPaciente());
+    } finally {
+      setEliminandoTurnoId(null);
+    }
   };
 
   const handleAbrirChat = async (idTurno: string) => {
@@ -102,7 +118,7 @@ export function MisTurnos() {
         <p>{misTurnos.length} turnos en total</p>
       </header>
 
-      {loading && <p>Cargando turnos...</p>}
+      {loading && misTurnos.length === 0 && <p>Cargando turnos...</p>}
       {error && <p className="error">{error}</p>}
 
       {misTurnos.length === 0 && <div className="empty">No tenes turnos.</div>}
@@ -136,6 +152,8 @@ export function MisTurnos() {
                             handleCancelarTurno={handleCancelarTurno}
                             handleEliminarTurno={handleEliminarTurno}
                             handleAbrirChat={handleAbrirChat}
+                            cancelandoTurnoId={cancelandoTurnoId}
+                            eliminandoTurnoId={eliminandoTurnoId}
                           />
                         </div>
                       ))}

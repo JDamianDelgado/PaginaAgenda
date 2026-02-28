@@ -4,7 +4,6 @@ import { miPerfilProfesional } from "../../Store/Profesionales/profesional.Thunk
 import { FormPerfilProfesional } from "../../components/formularios/perfilProfesional.create";
 import { UpdateFormPerfilProfesional } from "../../components/formularios/updatePerfilProfesional";
 import "../../styles/panelProfesional.css";
-import { misHorariosProfesional } from "../../Store/HorariosProfesional/HorarioProfesional.Thunks";
 import { Link } from "react-router-dom";
 import { MisHorariosProfesional } from "./misHorariosProfesional";
 import { ChatTurnoPanel } from "../../components/chat/ChatTurnoPanel";
@@ -14,12 +13,12 @@ export function PerfilProfesional() {
   const { usuario, loading, error } = useAppSelector(
     (state) => state.profesionales,
   );
-  const { misHorarios } = useAppSelector((state) => state.horarios);
   const { token } = useAppSelector((state) => state.auth);
   const [viewHours, setViewHours] = useState(false);
   const [viewForm, setViewForm] = useState(false);
   const [viewFormUpdate, setViewFormUpdate] = useState(false);
   const profesional = usuario?.profesional;
+  const horariosPerfil = profesional?.Horario ?? [];
 
   const tienePerfil = Boolean(profesional?.idProfesional);
   const turnosChat =
@@ -34,7 +33,6 @@ export function PerfilProfesional() {
   useEffect(() => {
     if (token) {
       dispatch(miPerfilProfesional());
-      dispatch(misHorariosProfesional());
     }
   }, [token, dispatch]);
 
@@ -101,7 +99,9 @@ export function PerfilProfesional() {
             {viewHours ? "Ocultar" : "Ver Mis Horarios"}
           </button>
           {viewHours && (
-            <MisHorariosProfesional misHorarios={misHorarios}></MisHorariosProfesional>
+            <MisHorariosProfesional
+              misHorarios={horariosPerfil}
+            ></MisHorariosProfesional>
           )}
         </div>
       )}

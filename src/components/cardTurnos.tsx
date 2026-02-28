@@ -1,12 +1,13 @@
-import { useAppSelector } from "../Store/hooks.Redux";
 import type { InterfaceMisTurnos } from "../Store/interfaces/interfaceTurnos";
 import "../styles/cardComponent.css";
 
 interface Props {
   turno: InterfaceMisTurnos;
-  handleCancelarTurno: (idTurno: string) => void;
-  handleEliminarTurno: (idTurno: string) => void;
+  handleCancelarTurno: (idTurno: string) => Promise<void>;
+  handleEliminarTurno: (idTurno: string) => Promise<void>;
   handleAbrirChat?: (idTurno: string) => void;
+  cancelandoTurnoId: string | null;
+  eliminandoTurnoId: string | null;
 }
 
 export function CardComponente({
@@ -14,8 +15,12 @@ export function CardComponente({
   handleCancelarTurno,
   handleEliminarTurno,
   handleAbrirChat,
+  cancelandoTurnoId,
+  eliminandoTurnoId,
 }: Props) {
-  const { loading } = useAppSelector((state) => state.turnos);
+  const cancelandoEsteTurno = cancelandoTurnoId === turno.idTurno;
+  const eliminandoEsteTurno = eliminandoTurnoId === turno.idTurno;
+  const deshabilitarAcciones = cancelandoEsteTurno || eliminandoEsteTurno;
 
   const fechaFormateada = (fecha: string) => {
     const [year, month, day] = fecha.split("-");
@@ -58,20 +63,20 @@ export function CardComponente({
       {/* RESERVADO */}
       {turno.estado === "RESERVADO" && (
         <button
-          disabled={loading}
+          disabled={deshabilitarAcciones}
           onClick={() => handleCancelarTurno(turno.idTurno)}
         >
-          {loading ? "Cancelando..." : "Cancelar turno"}
+          {cancelandoEsteTurno ? "Cancelando..." : "Cancelar turno"}
         </button>
       )}
 
       {/* CANCELADO */}
       {turno.estado === "CANCELADO" && (
         <button
-          disabled={loading}
+          disabled={deshabilitarAcciones}
           onClick={() => handleEliminarTurno(turno.idTurno)}
         >
-          {loading ? "Eliminando..." : "Eliminar turno"}
+          {eliminandoEsteTurno ? "Eliminando..." : "Eliminar turno"}
         </button>
       )}
 
